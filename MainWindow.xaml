@@ -38,7 +38,7 @@
                         Style="{DynamicResource btnSt}"/>
                     <Button x:Name="btnKab"                   
                     Content="Личный кабинет"
-                        Width="220"
+                        Width="235"
                         Style="{DynamicResource btnSt}"/>
 
                 </WrapPanel>
@@ -97,7 +97,8 @@
               Height="582px"
                Width="867px"
                Background="#E4F1F6"
-              HorizontalAlignment="Left" VerticalAlignment="Top" >
+              HorizontalAlignment="Left" 
+               VerticalAlignment="Top" >
 
         </Frame>
     </Grid>
