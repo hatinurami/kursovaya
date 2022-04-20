@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:elj"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="c:\users\тимошка\documents\диплом\elj\dictionarystyle.xaml"/>
     </Application.Resources>
 </Application>

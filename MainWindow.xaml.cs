@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using journal.frames;
 
-namespace elj
+namespace journal
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -23,6 +24,12 @@ namespace elj
         public MainWindow()
         {
             InitializeComponent();
+            mainFrame.Navigate(new PageRasp());
+        }
+
+        private void extClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
