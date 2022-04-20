@@ -16,20 +16,83 @@
                     <ColumnDefinition Width="84"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="67"/>
-                    <RowDefinition Height="44"/>
-                    <RowDefinition Height="44"/>
-                    <RowDefinition Height="44"/>
-                    <RowDefinition Height="44"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="46"/>
+                    <RowDefinition Height="46"/>
+                    <RowDefinition Height="46"/>
+                    <RowDefinition Height="46"/>
                 </Grid.RowDefinitions>
-
+                <Line Stroke="LightBlue"
+                      StrokeThickness="4"
+                      X1="84" Y1="0" 
+                      X2="200" Y2="84"/>
                 <Label     Style="{StaticResource lbSt}"
                            Grid.Column="1"
                            Height="35.57px"
                            Width="607.4px"
                            Content="ДеньНедели"/>
-                <TextBlock Style="{StaticResource txbSt}"
-                           Grid.Row="1"/>
+                
+                <Border Style="{StaticResource brdRSt}"
+                         Grid.Row="1">
+                    <WrapPanel VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="#1"
+                               Width="47"/>
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="Fggftdjhdfsjhfksdfjkshfjks"
+                                   Width="607"
+                                   />
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="09-10"
+                                   Width="43"/>
+                    </WrapPanel>
+                </Border>
+                
+                <Border Style="{StaticResource brdRSt}"
+                         Grid.Row="2">
+                    <WrapPanel VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="#1"
+                               Width="47"/>
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="Fggftdjhdfsjhfksdfjkshfjks"
+                                   Width="607"/>
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="09-10"
+                                   Width="43"/>
+                    </WrapPanel>
+                </Border>
+                
+                <Border Style="{StaticResource brdRSt}"
+                         Grid.Row="3">
+                    <WrapPanel VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="#1"
+                               Width="47"/>
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="Fggftdjhdfsjhfksdfjkshfjks"
+                                   Width="607"/>
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="09-10"
+                                   Width="43"/>
+                    </WrapPanel>
+                    
+                </Border>
+                
+                <Border Style="{StaticResource brdRSt}"
+                         Grid.Row="4">
+                    <WrapPanel VerticalAlignment="Center">
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="#1"
+                               Width="47"/>
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="Fggftdjhdfsjhfksdfjkshfjks"
+                                   Width="607"/>
+                        <TextBlock Style="{StaticResource txbSt}"
+                               Text="09-10"
+                                   Width="43"/>
+                    </WrapPanel>
+                </Border>
 
             </Grid>
         </Border>
