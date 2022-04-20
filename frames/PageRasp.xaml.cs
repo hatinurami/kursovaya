@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using elj.frames;
 
-namespace journal
+namespace elj.frames
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для PageRasp.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PageRasp : Page
     {
-        public MainWindow()
+        public PageRasp()
         {
             InitializeComponent();
-            mainFrame.Navigate(new PageRasp());
-        }
-
-        private void extClick(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

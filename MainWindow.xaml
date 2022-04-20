@@ -19,7 +19,6 @@
             <RowDefinition Height="auto" MinHeight="644"/>
         </Grid.RowDefinitions>
 
-
         <Border x:Name="topBrd"
             Grid.Column ="0"
                 Grid.ColumnSpan="2"
@@ -29,7 +28,7 @@
                 Margin="16,20,0,20">
             <Grid>
                 <WrapPanel
-                Margin="10 0"
+                    Margin="10 0"
                     VerticalAlignment="Center">
                     <Button x:Name="btnRasp"                    
                     Content="Расписание"
