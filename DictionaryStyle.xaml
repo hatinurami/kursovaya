@@ -59,18 +59,10 @@
         <Setter Property="Background"
                 Value="White"/>
     </Style>
-    <Style TargetType="TextBlock"
-           x:Key="txbSt">
+    <Style x:Key="brdRasp"
+           TargetType="Border">
         <Setter Property="Background"
          Value="#A1AEB4"/>
-        <Setter Property="FontFamily"
-                Value="ofont.ru_DobotoPro"/>
-        <Setter Property="FontSize"
-                Value="21"/>
-        <Setter Property="TextAlignment"
-                Value="Center"/>
-        <Setter Property="TextWrapping"
-                Value="Wrap"/>
         <Setter Property="Grid.ColumnSpan"
                 Value="3"/>
         <Setter Property="VerticalAlignment"
@@ -79,8 +71,20 @@
                 Value="43.26px"/>
         <Setter Property="Width"
                 Value="704.9px"/>
+    </Style>
 
-
+    <Style TargetType="TextBlock"
+           x:Key="txbSt">
+        
+        <Setter Property="FontFamily"
+                Value="ofont.ru_DobotoPro"/>
+        <Setter Property="FontSize"
+                Value="21"/>
+        <Setter Property="TextAlignment"
+                Value="Center"/>
+        <Setter Property="TextWrapping"
+                Value="Wrap"/>
+        
 
     </Style>
 
@@ -94,7 +98,6 @@
                 Value="21"/>
         <Setter Property="HorizontalContentAlignment"
                 Value="Center"/>
-        
         <Setter Property="VerticalContentAlignment"
                 Value="Center"/>
         <Setter Property="VerticalAlignment"

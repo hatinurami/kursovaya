@@ -10,12 +10,12 @@
       Loaded="Page_Loaded">
     <Grid>
 
-        <ListView x:Name="listRasp"
+        <!--<ListView x:Name="listRasp"
                   Background="Wheat"
                  >
             <ListView.ItemTemplate>
-            <DataTemplate>
-                <Border Style="{StaticResource brdSt}">
+            <DataTemplate-->
+        <Border Style="{StaticResource brdSt}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="84"/>
@@ -30,20 +30,26 @@
                     <RowDefinition Height="44"/>
                 </Grid.RowDefinitions>
 
-                <Label     Style="{StaticResource lbSt}"
+                <Label x:Name="titleDay"     
+                    Style="{StaticResource lbSt}"
                            Grid.Column="1"
                            Height="35.57px"
                            Width="607.4px"
-                           Content="{Binding Source=Shedule.dayOfWeek}"/>
-                <TextBlock Style="{StaticResource txbSt}"
-                           Grid.Row="1"/>
+                           Content="weeeee"/>
+                <Border Grid.Row="1"
+                        Grid.ColumnSpan="3">
+                    <TextBlock />
+                    
+                </Border>
+                
+                
 
             </Grid>
                 </Border>
-            </DataTemplate>
+            <!--</DataTemplate>
             </ListView.ItemTemplate>
 
-        </ListView>
+        </ListView>-->
         
         
     </Grid>
