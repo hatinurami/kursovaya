@@ -37,7 +37,7 @@
                 <Setter Property="ItemsControl.Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="5"
+                            <Border CornerRadius="0"
                             BorderBrush="Transparent"
                                 Background="#FF6B6C"
                                 BorderThickness="0.5">
@@ -53,7 +53,7 @@
     <Style x:Key="brdSt"
            TargetType="Border">
         <Setter Property="Height"
-                Value="248px"/>
+                Value="270px"/>
         <Setter Property="Width"
                 Value="780px"/>
         <Setter Property="Background"
@@ -62,7 +62,7 @@
     <Style x:Key="brdRasp"
            TargetType="Border">
         <Setter Property="Background"
-         Value="#A1AEB4"/>
+                 Value="#A1AEB4"/>
         <Setter Property="Grid.ColumnSpan"
                 Value="3"/>
         <Setter Property="VerticalAlignment"
@@ -71,16 +71,18 @@
                 Value="43.26px"/>
         <Setter Property="Width"
                 Value="704.9px"/>
+        
     </Style>
 
     <Style TargetType="TextBlock"
            x:Key="txbSt">
-        
         <Setter Property="FontFamily"
                 Value="ofont.ru_DobotoPro"/>
         <Setter Property="FontSize"
-                Value="21"/>
+                Value="18"/>
         <Setter Property="TextAlignment"
+                Value="Center"/>
+        <Setter Property="VerticalAlignment"
                 Value="Center"/>
         <Setter Property="TextWrapping"
                 Value="Wrap"/>
