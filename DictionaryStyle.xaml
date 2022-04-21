@@ -100,7 +100,5 @@
         <Setter Property="VerticalAlignment"
                 Value="Bottom"/>
 
-
-
     </Style>
 </ResourceDictionary>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static elj.appdata.DBapp;
 
 namespace elj.frames
 {
@@ -23,6 +24,19 @@ namespace elj.frames
         public PageRasp()
         {
             InitializeComponent();
+        }
+
+        private void Update()
+        {
+            var datasourse = context.Shedule.ToList();
+            //var rasp = datasourse;
+            listRasp.ItemsSource = datasourse;
+           
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Update();
         }
     }
 }

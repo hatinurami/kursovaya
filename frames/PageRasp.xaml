@@ -6,9 +6,16 @@
       xmlns:local="clr-namespace:elj.frames"
       mc:Ignorable="d" 
       d:DesignHeight="582" d:DesignWidth="867"
-      Title="PageRasp">
+      Title="PageRasp"
+      Loaded="Page_Loaded">
     <Grid>
-        <Border Style="{StaticResource brdSt}">
+
+        <ListView x:Name="listRasp"
+                  Background="Wheat"
+                 >
+            <ListView.ItemTemplate>
+            <DataTemplate>
+                <Border Style="{StaticResource brdSt}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="84"/>
@@ -27,11 +34,17 @@
                            Grid.Column="1"
                            Height="35.57px"
                            Width="607.4px"
-                           Content="ДеньНедели"/>
+                           Content="{Binding Source=Shedule.dayOfWeek}"/>
                 <TextBlock Style="{StaticResource txbSt}"
                            Grid.Row="1"/>
 
             </Grid>
-        </Border>
+                </Border>
+            </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+        
+        
     </Grid>
 </Page>

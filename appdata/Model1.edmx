@@ -1,0 +1,939 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище elJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="idGender" />
+          </Key>
+          <Property Name="idGender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="idPos" />
+          </Key>
+          <Property Name="idPos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="position" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shedule">
+          <Key>
+            <PropertyRef Name="idSchedule" />
+          </Key>
+          <Property Name="idSchedule" Type="int" Nullable="false" />
+          <Property Name="idGroup" Type="int" Nullable="false" />
+          <Property Name="idTimeTable" Type="int" Nullable="false" />
+          <Property Name="dayOfWeek" Type="smallint" Nullable="false" />
+          <Property Name="idTeachSub" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Speciality">
+          <Key>
+            <PropertyRef Name="idSpec" />
+          </Key>
+          <Property Name="idSpec" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="speciality" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="idStud" />
+          </Key>
+          <Property Name="idStud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="studGroup" Type="int" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentPerfomance">
+          <Key>
+            <PropertyRef Name="idStudPerf" />
+          </Key>
+          <Property Name="idStudPerf" Type="int" Nullable="false" />
+          <Property Name="idStud" Type="int" Nullable="false" />
+          <Property Name="mark" Type="smallint" Nullable="false" />
+          <Property Name="attendMark" Type="bit" Nullable="false" />
+          <Property Name="idSchedule" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudGroup">
+          <Key>
+            <PropertyRef Name="idGroup" />
+          </Key>
+          <Property Name="idGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="groupName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="specialty" Type="int" Nullable="false" />
+          <Property Name="yearOfAdmission" Type="int" Nullable="false" />
+          <Property Name="course" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="idSubj" />
+          </Key>
+          <Property Name="idSubj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subject" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="control" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="idTeach" />
+          </Key>
+          <Property Name="idTeach" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="idPosition" Type="int" Nullable="false" />
+          <Property Name="workExperience" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeachSubject">
+          <Key>
+            <PropertyRef Name="idTeachSub" />
+          </Key>
+          <Property Name="idTeachSub" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTeach" Type="int" Nullable="false" />
+          <Property Name="idSubj" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TimeTable">
+          <Key>
+            <PropertyRef Name="idClass" />
+          </Key>
+          <Property Name="idClass" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timeStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="timeFinish" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="lName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="patronim" Type="nvarchar" MaxLength="30" />
+          <Property Name="dateOfBirth" Type="date" Nullable="false" />
+          <Property Name="idGender" Type="int" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WeekDay">
+          <Key>
+            <PropertyRef Name="idDay" />
+          </Key>
+          <Property Name="idDay" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameDay" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Shedule_StudGroup">
+          <End Role="StudGroup" Type="Self.StudGroup" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudGroup">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_TeachSubject">
+          <End Role="TeachSubject" Type="Self.TeachSubject" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachSubject">
+              <PropertyRef Name="idTeachSub" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="idTeachSub" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_TimeTable">
+          <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeTable">
+              <PropertyRef Name="idClass" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="idTimeTable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_WeekDay">
+          <End Role="WeekDay" Type="Self.WeekDay" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeekDay">
+              <PropertyRef Name="idDay" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="dayOfWeek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Group">
+          <End Role="StudGroup" Type="Self.StudGroup" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudGroup">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="studGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPerfomance_Shedule">
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="1" />
+          <End Role="StudentPerfomance" Type="Self.StudentPerfomance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shedule">
+              <PropertyRef Name="idSchedule" />
+            </Principal>
+            <Dependent Role="StudentPerfomance">
+              <PropertyRef Name="idSchedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPerfomance_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentPerfomance" Type="Self.StudentPerfomance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="idStud" />
+            </Principal>
+            <Dependent Role="StudentPerfomance">
+              <PropertyRef Name="idStud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudGroup_Speciality">
+          <End Role="Speciality" Type="Self.Speciality" Multiplicity="1" />
+          <End Role="StudGroup" Type="Self.StudGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Speciality">
+              <PropertyRef Name="idSpec" />
+            </Principal>
+            <Dependent Role="StudGroup">
+              <PropertyRef Name="specialty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="idPos" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="idPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeachSubject_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="TeachSubject" Type="Self.TeachSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="idSubj" />
+            </Principal>
+            <Dependent Role="TeachSubject">
+              <PropertyRef Name="idSubj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeachSubject_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="TeachSubject" Type="Self.TeachSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="idTeach" />
+            </Principal>
+            <Dependent Role="TeachSubject">
+              <PropertyRef Name="idTeach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="idGender" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="idGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище elJournalModelContainer">
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shedule" EntityType="Self.Shedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Speciality" EntityType="Self.Speciality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentPerfomance" EntityType="Self.StudentPerfomance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudGroup" EntityType="Self.StudGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeachSubject" EntityType="Self.TeachSubject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeTable" EntityType="Self.TimeTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeekDay" EntityType="Self.WeekDay" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Shedule_StudGroup" Association="Self.FK_Shedule_StudGroup">
+            <End Role="StudGroup" EntitySet="StudGroup" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_TeachSubject" Association="Self.FK_Shedule_TeachSubject">
+            <End Role="TeachSubject" EntitySet="TeachSubject" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_TimeTable" Association="Self.FK_Shedule_TimeTable">
+            <End Role="TimeTable" EntitySet="TimeTable" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_WeekDay" Association="Self.FK_Shedule_WeekDay">
+            <End Role="WeekDay" EntitySet="WeekDay" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Group" Association="Self.FK_Student_Group">
+            <End Role="StudGroup" EntitySet="StudGroup" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Users" Association="Self.FK_Student_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPerfomance_Shedule" Association="Self.FK_StudentPerfomance_Shedule">
+            <End Role="Shedule" EntitySet="Shedule" />
+            <End Role="StudentPerfomance" EntitySet="StudentPerfomance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPerfomance_Student" Association="Self.FK_StudentPerfomance_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentPerfomance" EntitySet="StudentPerfomance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudGroup_Speciality" Association="Self.FK_StudGroup_Speciality">
+            <End Role="Speciality" EntitySet="Speciality" />
+            <End Role="StudGroup" EntitySet="StudGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Position" Association="Self.FK_Teacher_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Users" Association="Self.FK_Teacher_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeachSubject_Subject" Association="Self.FK_TeachSubject_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="TeachSubject" EntitySet="TeachSubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeachSubject_Teacher" Association="Self.FK_TeachSubject_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="TeachSubject" EntitySet="TeachSubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Gender" Association="Self.FK_Users_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="elJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="idGender" />
+          </Key>
+          <Property Name="idGender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gender1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Gender" FromRole="Gender" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="idPos" />
+          </Key>
+          <Property Name="idPos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="position1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_Position" FromRole="Position" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Shedule">
+          <Key>
+            <PropertyRef Name="idSchedule" />
+          </Key>
+          <Property Name="idSchedule" Type="Int32" Nullable="false" />
+          <Property Name="idGroup" Type="Int32" Nullable="false" />
+          <Property Name="idTimeTable" Type="Int32" Nullable="false" />
+          <Property Name="dayOfWeek" Type="Int16" Nullable="false" />
+          <Property Name="idTeachSub" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StudGroup" Relationship="Self.FK_Shedule_StudGroup" FromRole="Shedule" ToRole="StudGroup" />
+          <NavigationProperty Name="TeachSubject" Relationship="Self.FK_Shedule_TeachSubject" FromRole="Shedule" ToRole="TeachSubject" />
+          <NavigationProperty Name="TimeTable" Relationship="Self.FK_Shedule_TimeTable" FromRole="Shedule" ToRole="TimeTable" />
+          <NavigationProperty Name="WeekDay" Relationship="Self.FK_Shedule_WeekDay" FromRole="Shedule" ToRole="WeekDay" />
+          <NavigationProperty Name="StudentPerfomance" Relationship="Self.FK_StudentPerfomance_Shedule" FromRole="Shedule" ToRole="StudentPerfomance" />
+        </EntityType>
+        <EntityType Name="Speciality">
+          <Key>
+            <PropertyRef Name="idSpec" />
+          </Key>
+          <Property Name="idSpec" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="speciality1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudGroup" Relationship="Self.FK_StudGroup_Speciality" FromRole="Speciality" ToRole="StudGroup" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="idStud" />
+          </Key>
+          <Property Name="idStud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="studGroup" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="StudGroup1" Relationship="Self.FK_Student_Group" FromRole="Student" ToRole="StudGroup" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Student_Users" FromRole="Student" ToRole="Users" />
+          <NavigationProperty Name="StudentPerfomance" Relationship="Self.FK_StudentPerfomance_Student" FromRole="Student" ToRole="StudentPerfomance" />
+        </EntityType>
+        <EntityType Name="StudentPerfomance">
+          <Key>
+            <PropertyRef Name="idStudPerf" />
+          </Key>
+          <Property Name="idStudPerf" Type="Int32" Nullable="false" />
+          <Property Name="idStud" Type="Int32" Nullable="false" />
+          <Property Name="mark" Type="Int16" Nullable="false" />
+          <Property Name="attendMark" Type="Boolean" Nullable="false" />
+          <Property Name="idSchedule" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Shedule" Relationship="Self.FK_StudentPerfomance_Shedule" FromRole="StudentPerfomance" ToRole="Shedule" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudentPerfomance_Student" FromRole="StudentPerfomance" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="StudGroup">
+          <Key>
+            <PropertyRef Name="idGroup" />
+          </Key>
+          <Property Name="idGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="groupName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="specialty" Type="Int32" Nullable="false" />
+          <Property Name="yearOfAdmission" Type="Int32" Nullable="false" />
+          <Property Name="course" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_StudGroup" FromRole="StudGroup" ToRole="Shedule" />
+          <NavigationProperty Name="Speciality" Relationship="Self.FK_StudGroup_Speciality" FromRole="StudGroup" ToRole="Speciality" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Student_Group" FromRole="StudGroup" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="idSubj" />
+          </Key>
+          <Property Name="idSubj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subject1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="control" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TeachSubject" Relationship="Self.FK_TeachSubject_Subject" FromRole="Subject" ToRole="TeachSubject" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="idTeach" />
+          </Key>
+          <Property Name="idTeach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="idPosition" Type="Int32" Nullable="false" />
+          <Property Name="workExperience" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_Teacher_Position" FromRole="Teacher" ToRole="Position" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Teacher_Users" FromRole="Teacher" ToRole="Users" />
+          <NavigationProperty Name="TeachSubject" Relationship="Self.FK_TeachSubject_Teacher" FromRole="Teacher" ToRole="TeachSubject" />
+        </EntityType>
+        <EntityType Name="TeachSubject">
+          <Key>
+            <PropertyRef Name="idTeachSub" />
+          </Key>
+          <Property Name="idTeachSub" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTeach" Type="Int32" Nullable="false" />
+          <Property Name="idSubj" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_TeachSubject" FromRole="TeachSubject" ToRole="Shedule" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_TeachSubject_Subject" FromRole="TeachSubject" ToRole="Subject" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_TeachSubject_Teacher" FromRole="TeachSubject" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="TimeTable">
+          <Key>
+            <PropertyRef Name="idClass" />
+          </Key>
+          <Property Name="idClass" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timeStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="timeFinish" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_TimeTable" FromRole="TimeTable" ToRole="Shedule" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patronim" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idGender" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Users_Gender" FromRole="Users" ToRole="Gender" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Student_Users" FromRole="Users" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_Users" FromRole="Users" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="WeekDay">
+          <Key>
+            <PropertyRef Name="idDay" />
+          </Key>
+          <Property Name="idDay" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_WeekDay" FromRole="WeekDay" ToRole="Shedule" />
+        </EntityType>
+        <Association Name="FK_Users_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="idGender" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="idGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="idPos" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="idPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_StudGroup">
+          <End Role="StudGroup" Type="Self.StudGroup" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudGroup">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_TeachSubject">
+          <End Role="TeachSubject" Type="Self.TeachSubject" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachSubject">
+              <PropertyRef Name="idTeachSub" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="idTeachSub" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_TimeTable">
+          <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeTable">
+              <PropertyRef Name="idClass" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="idTimeTable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_WeekDay">
+          <End Role="WeekDay" Type="Self.WeekDay" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeekDay">
+              <PropertyRef Name="idDay" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="dayOfWeek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPerfomance_Shedule">
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="1" />
+          <End Role="StudentPerfomance" Type="Self.StudentPerfomance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shedule">
+              <PropertyRef Name="idSchedule" />
+            </Principal>
+            <Dependent Role="StudentPerfomance">
+              <PropertyRef Name="idSchedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudGroup_Speciality">
+          <End Role="Speciality" Type="Self.Speciality" Multiplicity="1" />
+          <End Role="StudGroup" Type="Self.StudGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Speciality">
+              <PropertyRef Name="idSpec" />
+            </Principal>
+            <Dependent Role="StudGroup">
+              <PropertyRef Name="specialty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Group">
+          <End Role="StudGroup" Type="Self.StudGroup" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudGroup">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="studGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPerfomance_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentPerfomance" Type="Self.StudentPerfomance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="idStud" />
+            </Principal>
+            <Dependent Role="StudentPerfomance">
+              <PropertyRef Name="idStud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeachSubject_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="TeachSubject" Type="Self.TeachSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="idSubj" />
+            </Principal>
+            <Dependent Role="TeachSubject">
+              <PropertyRef Name="idSubj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeachSubject_Teacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="TeachSubject" Type="Self.TeachSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="idTeach" />
+            </Principal>
+            <Dependent Role="TeachSubject">
+              <PropertyRef Name="idTeach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="elJournalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Position" EntityType="Self.Position" />
+          <EntitySet Name="Shedule" EntityType="Self.Shedule" />
+          <EntitySet Name="Speciality" EntityType="Self.Speciality" />
+          <EntitySet Name="Student" EntityType="Self.Student" />
+          <EntitySet Name="StudentPerfomance" EntityType="Self.StudentPerfomance" />
+          <EntitySet Name="StudGroup" EntityType="Self.StudGroup" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" />
+          <EntitySet Name="TeachSubject" EntityType="Self.TeachSubject" />
+          <EntitySet Name="TimeTable" EntityType="Self.TimeTable" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="WeekDay" EntityType="Self.WeekDay" />
+          <AssociationSet Name="FK_Users_Gender" Association="Self.FK_Users_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Position" Association="Self.FK_Teacher_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_StudGroup" Association="Self.FK_Shedule_StudGroup">
+            <End Role="StudGroup" EntitySet="StudGroup" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_TeachSubject" Association="Self.FK_Shedule_TeachSubject">
+            <End Role="TeachSubject" EntitySet="TeachSubject" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_TimeTable" Association="Self.FK_Shedule_TimeTable">
+            <End Role="TimeTable" EntitySet="TimeTable" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_WeekDay" Association="Self.FK_Shedule_WeekDay">
+            <End Role="WeekDay" EntitySet="WeekDay" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPerfomance_Shedule" Association="Self.FK_StudentPerfomance_Shedule">
+            <End Role="Shedule" EntitySet="Shedule" />
+            <End Role="StudentPerfomance" EntitySet="StudentPerfomance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudGroup_Speciality" Association="Self.FK_StudGroup_Speciality">
+            <End Role="Speciality" EntitySet="Speciality" />
+            <End Role="StudGroup" EntitySet="StudGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Group" Association="Self.FK_Student_Group">
+            <End Role="StudGroup" EntitySet="StudGroup" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Users" Association="Self.FK_Student_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPerfomance_Student" Association="Self.FK_StudentPerfomance_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentPerfomance" EntitySet="StudentPerfomance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeachSubject_Subject" Association="Self.FK_TeachSubject_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="TeachSubject" EntitySet="TeachSubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Users" Association="Self.FK_Teacher_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeachSubject_Teacher" Association="Self.FK_TeachSubject_Teacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="TeachSubject" EntitySet="TeachSubject" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище elJournalModelContainer" CdmEntityContainer="elJournalEntities">
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="elJournalModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="idGender" ColumnName="idGender" />
+                <ScalarProperty Name="gender1" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Position">
+            <EntityTypeMapping TypeName="elJournalModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="idPos" ColumnName="idPos" />
+                <ScalarProperty Name="position1" ColumnName="position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shedule">
+            <EntityTypeMapping TypeName="elJournalModel.Shedule">
+              <MappingFragment StoreEntitySet="Shedule">
+                <ScalarProperty Name="idSchedule" ColumnName="idSchedule" />
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+                <ScalarProperty Name="idTimeTable" ColumnName="idTimeTable" />
+                <ScalarProperty Name="dayOfWeek" ColumnName="dayOfWeek" />
+                <ScalarProperty Name="idTeachSub" ColumnName="idTeachSub" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Speciality">
+            <EntityTypeMapping TypeName="elJournalModel.Speciality">
+              <MappingFragment StoreEntitySet="Speciality">
+                <ScalarProperty Name="idSpec" ColumnName="idSpec" />
+                <ScalarProperty Name="speciality1" ColumnName="speciality" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="elJournalModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="idStud" ColumnName="idStud" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="studGroup" ColumnName="studGroup" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentPerfomance">
+            <EntityTypeMapping TypeName="elJournalModel.StudentPerfomance">
+              <MappingFragment StoreEntitySet="StudentPerfomance">
+                <ScalarProperty Name="idStudPerf" ColumnName="idStudPerf" />
+                <ScalarProperty Name="idStud" ColumnName="idStud" />
+                <ScalarProperty Name="mark" ColumnName="mark" />
+                <ScalarProperty Name="attendMark" ColumnName="attendMark" />
+                <ScalarProperty Name="idSchedule" ColumnName="idSchedule" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudGroup">
+            <EntityTypeMapping TypeName="elJournalModel.StudGroup">
+              <MappingFragment StoreEntitySet="StudGroup">
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+                <ScalarProperty Name="groupName" ColumnName="groupName" />
+                <ScalarProperty Name="specialty" ColumnName="specialty" />
+                <ScalarProperty Name="yearOfAdmission" ColumnName="yearOfAdmission" />
+                <ScalarProperty Name="course" ColumnName="course" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subject">
+            <EntityTypeMapping TypeName="elJournalModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="idSubj" ColumnName="idSubj" />
+                <ScalarProperty Name="subject1" ColumnName="subject" />
+                <ScalarProperty Name="control" ColumnName="control" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="elJournalModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher">
+            <EntityTypeMapping TypeName="elJournalModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="idTeach" ColumnName="idTeach" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idPosition" ColumnName="idPosition" />
+                <ScalarProperty Name="workExperience" ColumnName="workExperience" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeachSubject">
+            <EntityTypeMapping TypeName="elJournalModel.TeachSubject">
+              <MappingFragment StoreEntitySet="TeachSubject">
+                <ScalarProperty Name="idTeachSub" ColumnName="idTeachSub" />
+                <ScalarProperty Name="idTeach" ColumnName="idTeach" />
+                <ScalarProperty Name="idSubj" ColumnName="idSubj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeTable">
+            <EntityTypeMapping TypeName="elJournalModel.TimeTable">
+              <MappingFragment StoreEntitySet="TimeTable">
+                <ScalarProperty Name="idClass" ColumnName="idClass" />
+                <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+                <ScalarProperty Name="timeFinish" ColumnName="timeFinish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="elJournalModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="lName" ColumnName="lName" />
+                <ScalarProperty Name="patronim" ColumnName="patronim" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="idGender" ColumnName="idGender" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeekDay">
+            <EntityTypeMapping TypeName="elJournalModel.WeekDay">
+              <MappingFragment StoreEntitySet="WeekDay">
+                <ScalarProperty Name="idDay" ColumnName="idDay" />
+                <ScalarProperty Name="nameDay" ColumnName="nameDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
