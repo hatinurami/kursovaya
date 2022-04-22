@@ -29,7 +29,8 @@ namespace elj.frames
         private void Update()
         {
             var datasourse = context.Shedule.ToList();
-            //var rasp = datasourse;
+            var rasp = datasourse;
+            
             listRasp.ItemsSource = datasourse;
            
         }
