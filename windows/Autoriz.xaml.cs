@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace elj.windows
 {
     /// <summary>
@@ -22,6 +23,18 @@ namespace elj.windows
         public Autoriz()
         {
             InitializeComponent();
+        }
+
+        private void entBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.ShowDialog();
+           
+        }
+
+        private void extBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

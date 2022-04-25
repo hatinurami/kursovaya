@@ -1,9 +1,9 @@
-﻿<Window x:Class="journal.MainWindow"
+﻿<Window x:Class="elj.windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:journal"
+        xmlns:local="clr-namespace:elj"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Style="{DynamicResource winSt}"
@@ -49,9 +49,6 @@
                         Style="{DynamicResource btnSt}"
                     Click="extClick"/>
             </Grid>
-
-
-
 
         </Border>
         <Border x:Name="lefBrd"

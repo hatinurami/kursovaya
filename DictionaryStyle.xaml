@@ -25,7 +25,7 @@
         <Setter Property="Foreground"
                 Value="White"/>
         <Setter Property="FontFamily"
-                Value="Courier New"/>
+                Value="/elj;component/appdata/#DobotoPro"/>
         <Setter Property="Background"
                 Value="Transparent"/>
         <Setter Property="BorderBrush"

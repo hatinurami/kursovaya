@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using elj.frames;
 
-namespace journal
+namespace elj.windows
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -23,8 +23,12 @@ namespace journal
     {
         public MainWindow()
         {
+#pragma warning disable CS0103 // Имя "InitializeComponent" не существует в текущем контексте.
             InitializeComponent();
+#pragma warning restore CS0103 // Имя "InitializeComponent" не существует в текущем контексте.
+#pragma warning disable CS0103 // Имя "mainFrame" не существует в текущем контексте.
             mainFrame.Navigate(new PageRasp());
+#pragma warning restore CS0103 // Имя "mainFrame" не существует в текущем контексте.
         }
 
         private void extClick(object sender, RoutedEventArgs e)

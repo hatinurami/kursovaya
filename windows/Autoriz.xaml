@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:elj.windows"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Style="{StaticResource winSt}"
         Title="Autoriz">
     <Grid>
@@ -51,9 +52,26 @@
                        Margin="10">
                     <Button x:Name="entBtn"
                             Content="Войти"
+                            Click="entBtn_Click"
                             Style="{StaticResource btnSt}"
                             Foreground="#3D6271"/>
+                    <!--<Button x:Name="extBtn"
+                            Content="Выйти"
+                            Style="{StaticResource btnSt}"
+                            Foreground="#A9C5D1"
+                            Margin="150 0 0 0"/>-->
                 </WrapPanel>
+                <Button x:Name="extBtn"
+                            Content="x"
+                            Style="{StaticResource btnSt}"
+                            Foreground="#A9C5D1"
+                            Height="60"
+                        FontSize="50"
+                            Width="50"
+                        FontFamily="/elj;component/appdata/#DobotoPro"
+                        VerticalAlignment="Top"
+                        Click="extBtn_Click"
+                        HorizontalAlignment="Right"/>
             </Grid>
         </Border>
     </Grid>
