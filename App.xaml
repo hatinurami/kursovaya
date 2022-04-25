@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:elj"
-             StartupUri="MainWindow.xaml">
+             StartupUri="windows\Autoriz.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="c:\users\тимошка\documents\диплом\elj\dictionarystyle.xaml"/>
+        <ResourceDictionary Source="dictionarystyle.xaml"/>
     </Application.Resources>
 </Application>
