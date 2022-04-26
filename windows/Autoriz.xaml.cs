@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static elj.appdata.DBapp;
 
 
 namespace elj.windows
@@ -27,14 +28,65 @@ namespace elj.windows
 
         private void entBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            main.ShowDialog();
-           
+            try
+            {
+                var log = context.Users.ToList().
+                    Where(i => logTxt.Text == i.login && pasPbx.Password == i.password).FirstOrDefault();
+
+                if (log != null)
+                {
+                    var stdAut = context.Student.ToList().
+                        Where(j => log.idUser == j.idUser).ToList();
+
+                    var prepAut = context.Teacher.ToList().
+                        Where(j => log.idUser == j.idUser).ToList();
+
+                    if (stdAut != null)
+                    {
+                        MainWindow main = new MainWindow();
+                        main.ShowDialog();
+                    }
+                    else if (prepAut != null)
+                    {
+                        MainWindow main = new MainWindow();
+                        main.ShowDialog();
+                    }
+                }
+                else
+                {
+                    if (logTxt.Text == null || pasPbx == null)
+                        MessageBox.Show("заполните поля!");
+                   
+                    MessageBox.Show("ой");
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.ToString());
+               
+            }
+
+
         }
+
 
         private void extBtn_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
+
+        private void tb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            logTxt.Text = logTxt.Text.Replace(" ", string.Empty);
+            logTxt.SelectionStart = logTxt.Text.Length;
+
+            
+            
+        }
+
+        
     }
+
+
 }
+

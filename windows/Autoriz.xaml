@@ -32,6 +32,7 @@
                      BorderBrush="#A9C5D1"
                      Height="58px"
                      Width="527px"
+                     TextChanged="tb_TextChanged"
                      Margin="0 0 0 20"/>
 
 
@@ -45,6 +46,7 @@
                      BorderBrush="#A9C5D1"
                      Height="58px"
                      Width="527px"
+                     
                      Margin="0 0 0 20"/>
             </StackPanel>
             <WrapPanel VerticalAlignment="Bottom"
