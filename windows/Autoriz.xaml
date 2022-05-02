@@ -28,6 +28,9 @@
                            FontFamily="Courier New Bold"
                            Foreground="#A9C5D1"/>
                 <TextBox x:Name="logTxt"
+                         
+                         FontSize="30"
+                         Foreground="#3D6271"
                      BorderThickness="7"
                      BorderBrush="#A9C5D1"
                      Height="58px"
@@ -39,10 +42,14 @@
                 <TextBlock Text="Пароль"
                            FontSize="30"
                            TextAlignment="Left"
+                           
                            FontFamily="Courier New Bold"
                            Foreground="#A9C5D1"/>
                 <PasswordBox x:Name="pasPbx"
                      BorderThickness="7"
+                             FontSize="30"
+                         Foreground="#3D6271"
+                            
                      BorderBrush="#A9C5D1"
                      Height="58px"
                      Width="527px"
@@ -63,17 +70,18 @@
                             Foreground="#A9C5D1"
                             Margin="150 0 0 0"/>-->
                 </WrapPanel>
+                
                 <Button x:Name="extBtn"
-                            Content="x"
-                            Style="{StaticResource btnSt}"
-                            Foreground="#A9C5D1"
-                            Height="60"
-                        FontSize="50"
-                            Width="50"
-                        FontFamily="/elj;component/appdata/#DobotoPro"
+                            
+                            Style="{StaticResource btnSt}"                           
+                            Height="45"                      
+                            Width="45"                       
                         VerticalAlignment="Top"
                         Click="extBtn_Click"
-                        HorizontalAlignment="Right"/>
+                        HorizontalAlignment="Right">
+                   <Image Source="/pic/gg_close-r.png" />
+
+                </Button>
             </Grid>
         </Border>
     </Grid>
