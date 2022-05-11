@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище elJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище elJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="idGender" />
@@ -23,7 +23,7 @@
           <Key>
             <PropertyRef Name="idSchedule" />
           </Key>
-          <Property Name="idSchedule" Type="int" Nullable="false" />
+          <Property Name="idSchedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idGroup" Type="int" Nullable="false" />
           <Property Name="idTimeTable" Type="int" Nullable="false" />
           <Property Name="dayOfWeek" Type="smallint" Nullable="false" />
@@ -72,8 +72,7 @@
             <PropertyRef Name="idSubj" />
           </Key>
           <Property Name="idSubj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="subject" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="control" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="subjectname" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -129,6 +128,19 @@
           </Key>
           <Property Name="idDay" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nameDay" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "elJournal.dbo.RaspGrEK32" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="RaspGrEK32">
+          <Key>
+            <PropertyRef Name="Grouop" />
+            <PropertyRef Name="num" />
+            <PropertyRef Name="subjectname" />
+          </Key>
+          <Property Name="Grouop" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="num" Type="int" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="50" />
+          <Property Name="subjectname" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Shedule_StudGroup">
           <End Role="StudGroup" Type="Self.StudGroup" Multiplicity="1" />
@@ -199,18 +211,6 @@
             </Principal>
             <Dependent Role="Student">
               <PropertyRef Name="idUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentPerfomance_Shedule">
-          <End Role="Shedule" Type="Self.Shedule" Multiplicity="1" />
-          <End Role="StudentPerfomance" Type="Self.StudentPerfomance" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shedule">
-              <PropertyRef Name="idSchedule" />
-            </Principal>
-            <Dependent Role="StudentPerfomance">
-              <PropertyRef Name="idSchedule" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -298,6 +298,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище elJournalModelContainer">
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
@@ -313,6 +344,14 @@
           <EntitySet Name="TimeTable" EntityType="Self.TimeTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WeekDay" EntityType="Self.WeekDay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RaspGrEK32" EntityType="Self.RaspGrEK32" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RaspGrEK32].[Grouop] AS [Grouop], 
+    [RaspGrEK32].[num] AS [num], 
+    [RaspGrEK32].[Day] AS [Day], 
+    [RaspGrEK32].[subjectname] AS [subjectname]
+    FROM [dbo].[RaspGrEK32] AS [RaspGrEK32]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Shedule_StudGroup" Association="Self.FK_Shedule_StudGroup">
             <End Role="StudGroup" EntitySet="StudGroup" />
             <End Role="Shedule" EntitySet="Shedule" />
@@ -336,10 +375,6 @@
           <AssociationSet Name="FK_Student_Users" Association="Self.FK_Student_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Student" EntitySet="Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentPerfomance_Shedule" Association="Self.FK_StudentPerfomance_Shedule">
-            <End Role="Shedule" EntitySet="Shedule" />
-            <End Role="StudentPerfomance" EntitySet="StudentPerfomance" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentPerfomance_Student" Association="Self.FK_StudentPerfomance_Student">
             <End Role="Student" EntitySet="Student" />
@@ -370,8 +405,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="elJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -453,15 +487,6 @@
           <NavigationProperty Name="Speciality" Relationship="Self.FK_StudGroup_Speciality" FromRole="StudGroup" ToRole="Speciality" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Student_Group" FromRole="StudGroup" ToRole="Student" />
         </EntityType>
-        <EntityType Name="Subject">
-          <Key>
-            <PropertyRef Name="idSubj" />
-          </Key>
-          <Property Name="idSubj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="subject1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="control" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="TeachSubject" Relationship="Self.FK_TeachSubject_Subject" FromRole="Subject" ToRole="TeachSubject" />
-        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -492,8 +517,8 @@
           <Property Name="idTeach" Type="Int32" Nullable="false" />
           <Property Name="idSubj" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_TeachSubject" FromRole="TeachSubject" ToRole="Shedule" />
-          <NavigationProperty Name="Subject" Relationship="Self.FK_TeachSubject_Subject" FromRole="TeachSubject" ToRole="Subject" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_TeachSubject_Teacher" FromRole="TeachSubject" ToRole="Teacher" />
+          <NavigationProperty Name="Subject" Relationship="elJournalModel.FK_TeachSubject_Subject" FromRole="TeachSubject" ToRole="Subject" />
         </EntityType>
         <EntityType Name="TimeTable">
           <Key>
@@ -660,18 +685,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TeachSubject_Subject">
-          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
-          <End Role="TeachSubject" Type="Self.TeachSubject" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Subject">
-              <PropertyRef Name="idSubj" />
-            </Principal>
-            <Dependent Role="TeachSubject">
-              <PropertyRef Name="idSubj" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Teacher_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
@@ -704,7 +717,6 @@
           <EntitySet Name="Student" EntityType="Self.Student" />
           <EntitySet Name="StudentPerfomance" EntityType="Self.StudentPerfomance" />
           <EntitySet Name="StudGroup" EntityType="Self.StudGroup" />
-          <EntitySet Name="Subject" EntityType="Self.Subject" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" />
           <EntitySet Name="TeachSubject" EntityType="Self.TeachSubject" />
@@ -755,10 +767,6 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="StudentPerfomance" EntitySet="StudentPerfomance" />
           </AssociationSet>
-          <AssociationSet Name="FK_TeachSubject_Subject" Association="Self.FK_TeachSubject_Subject">
-            <End Role="Subject" EntitySet="Subject" />
-            <End Role="TeachSubject" EntitySet="TeachSubject" />
-          </AssociationSet>
           <AssociationSet Name="FK_Teacher_Users" Association="Self.FK_Teacher_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Teacher" EntitySet="Teacher" />
@@ -767,7 +775,85 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="TeachSubject" EntitySet="TeachSubject" />
           </AssociationSet>
+          <EntitySet Name="RaspGrEK32" EntityType="elJournalModel.RaspGrEK32" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(elJournalModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(elJournalModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Subject" EntityType="elJournalModel.Subject" />
+          <AssociationSet Name="FK_TeachSubject_Subject" Association="elJournalModel.FK_TeachSubject_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="TeachSubject" EntitySet="TeachSubject" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="RaspGrEK32">
+          <Key>
+            <PropertyRef Name="Grouop" />
+            <PropertyRef Name="num" />
+            <PropertyRef Name="subjectname" />
+          </Key>
+          <Property Name="Grouop" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="num" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="subjectname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="idSubj" />
+          </Key>
+          <Property Name="idSubj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subjectname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TeachSubject" Relationship="elJournalModel.FK_TeachSubject_Subject" FromRole="Subject" ToRole="TeachSubject" />
+        </EntityType>
+        <Association Name="FK_TeachSubject_Subject">
+          <End Type="elJournalModel.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="elJournalModel.TeachSubject" Role="TeachSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="idSubj" />
+            </Principal>
+            <Dependent Role="TeachSubject">
+              <PropertyRef Name="idSubj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -843,15 +929,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Subject">
-            <EntityTypeMapping TypeName="elJournalModel.Subject">
-              <MappingFragment StoreEntitySet="Subject">
-                <ScalarProperty Name="idSubj" ColumnName="idSubj" />
-                <ScalarProperty Name="subject1" ColumnName="subject" />
-                <ScalarProperty Name="control" ColumnName="control" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="elJournalModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -910,6 +987,48 @@
               <MappingFragment StoreEntitySet="WeekDay">
                 <ScalarProperty Name="idDay" ColumnName="idDay" />
                 <ScalarProperty Name="nameDay" ColumnName="nameDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RaspGrEK32">
+            <EntityTypeMapping TypeName="elJournalModel.RaspGrEK32">
+              <MappingFragment StoreEntitySet="RaspGrEK32">
+                <ScalarProperty Name="subjectname" ColumnName="subjectname" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="Grouop" ColumnName="Grouop" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище elJournalModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище elJournalModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище elJournalModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище elJournalModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="elJournalModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище elJournalModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="elJournalModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище elJournalModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище elJournalModel.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Subject">
+            <EntityTypeMapping TypeName="elJournalModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="subjectname" ColumnName="subjectname" />
+                <ScalarProperty Name="idSubj" ColumnName="idSubj" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

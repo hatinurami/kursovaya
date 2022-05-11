@@ -12,21 +12,11 @@ namespace elj.appdata
     using System;
     using System.Collections.Generic;
     
-    public partial class TeachSubject
+    public partial class RaspGrEK32
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TeachSubject()
-        {
-            this.Shedule = new HashSet<Shedule>();
-        }
-    
-        public int idTeachSub { get; set; }
-        public int idTeach { get; set; }
-        public int idSubj { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Shedule> Shedule { get; set; }
-        public virtual Teacher Teacher { get; set; }
-        public virtual Subject Subject { get; set; }
+        public string Grouop { get; set; }
+        public int num { get; set; }
+        public string Day { get; set; }
+        public string subjectname { get; set; }
     }
 }

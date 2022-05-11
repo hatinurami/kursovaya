@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="elJournalModel.Student" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="elJournalModel.StudentPerfomance" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="elJournalModel.StudGroup" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="elJournalModel.Subject" Width="1.5" PointX="11.25" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="elJournalModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="elJournalModel.Teacher" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="elJournalModel.TeachSubject" Width="1.5" PointX="13.5" PointY="5" IsExpanded="true" />
@@ -30,9 +29,11 @@
         <AssociationConnector Association="elJournalModel.FK_Student_Group" ManuallyRouted="false" />
         <AssociationConnector Association="elJournalModel.FK_Student_Users" ManuallyRouted="false" />
         <AssociationConnector Association="elJournalModel.FK_StudentPerfomance_Student" ManuallyRouted="false" />
-        <AssociationConnector Association="elJournalModel.FK_TeachSubject_Subject" ManuallyRouted="false" />
         <AssociationConnector Association="elJournalModel.FK_Teacher_Users" ManuallyRouted="false" />
         <AssociationConnector Association="elJournalModel.FK_TeachSubject_Teacher" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="elJournalModel.RaspGrEK32" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="elJournalModel.Subject" Width="1.5" PointX="3.375" PointY="8.875" />
+        <AssociationConnector Association="elJournalModel.FK_TeachSubject_Subject" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -10,20 +10,13 @@
 namespace elj.appdata
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Subject
+    public partial class sp_helpdiagrams_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Subject()
-        {
-            this.TeachSubject = new HashSet<TeachSubject>();
-        }
-    
-        public int idSubj { get; set; }
-        public string subjectname { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeachSubject> TeachSubject { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

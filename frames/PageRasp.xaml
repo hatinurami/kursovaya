@@ -12,15 +12,17 @@
 
         <ListView x:Name="listRasp"
                   Background="Transparent"
+                  
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ScrollViewer.VerticalScrollBarVisibility="Disabled">
-            
+            -
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Margin="30"
                             CornerRadius="45" Style="{StaticResource brdSt}">
             
             <Grid>
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="84"/>
                     <ColumnDefinition/>
@@ -39,7 +41,7 @@
                            Grid.Column="1"
                            Height="35.57px"
                            Width="607.4px"
-                           Content="weeeee"/>
+                           Content="{Binding Day}"/>
                 <Border Grid.Row="1"
                         Grid.ColumnSpan="3"
                         Style="{StaticResource brdRasp}">
@@ -48,7 +50,7 @@
                               Text="1"
                               Width="47"/>
                         <TextBlock x:Name="subjName" Style="{StaticResource txbSt}"
-                              Text="hhhhhhhhhhhhhhhhhhhhhhhhhh"
+                              Text="{Binding subjectname}"
                               Width="408"/>
                         <TextBlock x:Name="teachName" Style="{StaticResource txbSt}"
                               Text="rrrrrrrr"
@@ -59,62 +61,7 @@
                     </WrapPanel>
                 </Border>
 
-                <Border Grid.Row="2"
-                        Grid.ColumnSpan="3"
-                        Style="{StaticResource brdRasp}">
-                    <WrapPanel VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource txbSt}"
-                              Text="2"
-                              Width="47"/>
-                        <TextBlock x:Name="subjName1" Style="{StaticResource txbSt}"
-                              Text="hhhhhhhhhhhhhhhhhhhhhhhhhh"
-                              Width="408"/>
-                        <TextBlock x:Name="teachName1" Style="{StaticResource txbSt}"
-                              Text="rrrrrrrr"
-                              Width="200"/>
-                        <TextBlock x:Name="timeCl1" Style="{StaticResource txbSt}"
-                              Text="05:59"
-                              Width="50"/>
-                    </WrapPanel>
-                </Border>
-
-                <Border Grid.Row="3"
-                        Grid.ColumnSpan="3"
-                        Style="{StaticResource brdRasp}">
-                    <WrapPanel VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource txbSt}"
-                              Text="3"
-                              Width="47"/>
-                        <TextBlock x:Name="subjName2" Style="{StaticResource txbSt}"
-                              Text="hhhhhhhhhhhhhhhhhhhhhhhhhh"
-                              Width="408"/>
-                        <TextBlock x:Name="teachName2" Style="{StaticResource txbSt}"
-                              Text="rrrrrrrr"
-                              Width="200"/>
-                        <TextBlock x:Name="timeCl2" Style="{StaticResource txbSt}"
-                              Text="05:59"
-                              Width="50"/>
-                    </WrapPanel>
-                </Border>
-
-                <Border Grid.Row="4"
-                        Grid.ColumnSpan="3"
-                        Style="{StaticResource brdRasp}">
-                    <WrapPanel VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource txbSt}"
-                              Text="4"
-                              Width="47"/>
-                        <TextBlock x:Name="subjName3" Style="{StaticResource txbSt}"
-                              Text="hhhhhhhhhhhhhhhhhhhhhhhhhh"
-                              Width="408"/>
-                        <TextBlock x:Name="teachName3" Style="{StaticResource txbSt}"
-                              Text="rrrrrrrr"
-                              Width="200"/>
-                        <TextBlock x:Name="timeCl3" Style="{StaticResource txbSt}"
-                              Text="05:59"
-                              Width="50"/>
-                    </WrapPanel>
-                </Border>
+                
                 
                 <Line Stroke="#3D6271"
                       X1="3" Y1="14"
