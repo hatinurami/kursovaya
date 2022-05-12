@@ -36,19 +36,24 @@ namespace elj.windows
                 if (log != null)
                 {
                     var stdAut = context.Student.ToList().
-                        Where(j => log.idUser == j.idUser).ToList();
+                        Where(j => log.idUser == j.idUser);
 
                     var prepAut = context.Teacher.ToList().
-                        Where(j => log.idUser == j.idUser).ToList();
+                        Where(j => log.idUser == j.idUser);
 
                     if (stdAut != null)
                     {
-                        MainWindow main = new MainWindow();
+                        autst = stdAut.FirstOrDefault();
+                        int stGr = Convert.ToInt32(autst.studGroup);
+                        MainWindow main = new MainWindow(stGr);
                         main.ShowDialog();
                     }
                     else if (prepAut != null)
                     {
-                        MainWindow main = new MainWindow();
+                        auttch = prepAut.FirstOrDefault();
+                        int idTS = Convert.ToInt32(context.TeachSubject.
+                            Where(i=> i.idTeach == auttch.idTeach));
+                        MainWindow main = new MainWindow(idTS);
                         main.ShowDialog();
                     }
                 }

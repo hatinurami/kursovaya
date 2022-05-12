@@ -15,7 +15,7 @@
                   
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ScrollViewer.VerticalScrollBarVisibility="Disabled">
-            -
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Margin="30"

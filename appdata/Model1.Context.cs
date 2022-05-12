@@ -145,5 +145,14 @@ namespace elj.appdata
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<RaspGroup_Result> RaspGroup(Nullable<int> gr)
+        {
+            var grParameter = gr.HasValue ?
+                new ObjectParameter("gr", gr) :
+                new ObjectParameter("gr", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RaspGroup_Result>("RaspGroup", grParameter);
+        }
     }
 }

@@ -21,17 +21,18 @@ namespace elj.frames
     /// </summary>
     public partial class PageRasp : Page
     {
-        public PageRasp()
+        private int GroupSt;
+        public PageRasp(int a)
         {
             InitializeComponent();
+            GroupSt = a;
         }
 
         private void Update()
         {
-            var datasourse = context.RaspGrEK32.ToList();
-            var rasp = datasourse;
+           
             
-            listRasp.ItemsSource = datasourse;
+            listRasp.ItemsSource = context.RaspGroup(GroupSt);
            
         }
 

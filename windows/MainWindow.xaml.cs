@@ -21,14 +21,12 @@ namespace elj.windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(int a)
         {
-#pragma warning disable CS0103 // Имя "InitializeComponent" не существует в текущем контексте.
+
             InitializeComponent();
-#pragma warning restore CS0103 // Имя "InitializeComponent" не существует в текущем контексте.
-#pragma warning disable CS0103 // Имя "mainFrame" не существует в текущем контексте.
-            mainFrame.Navigate(new PageRasp());
-#pragma warning restore CS0103 // Имя "mainFrame" не существует в текущем контексте.
+            mainFrame.Navigate(new PageRasp(a));
+
         }
 
         private void extClick(object sender, RoutedEventArgs e)
