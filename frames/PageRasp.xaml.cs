@@ -30,10 +30,11 @@ namespace elj.frames
 
         private void Update()
         {
-           
-            
+
             listRasp.ItemsSource = context.RaspGroup(GroupSt);
-           
+            
+            
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

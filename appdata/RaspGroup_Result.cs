@@ -17,5 +17,6 @@ namespace elj.appdata
         public int num { get; set; }
         public string Day { get; set; }
         public string subjectname { get; set; }
+        public System.TimeSpan timeStart { get; set; }
     }
 }

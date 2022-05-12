@@ -10,6 +10,10 @@
       Loaded="Page_Loaded">
     <Grid>
 
+        
+
+
+
         <ListView x:Name="listRasp"
                   Background="Transparent"
                   
@@ -17,53 +21,72 @@
                   ScrollViewer.VerticalScrollBarVisibility="Disabled">
             
             <ListView.ItemTemplate>
+
+
                 <DataTemplate>
                     <Border Margin="30"
+                            Height="auto"
                             CornerRadius="45" Style="{StaticResource brdSt}">
-            
-            <Grid>
-                
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="84"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="84"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
 
-                <Label x:Name="titleDay"     
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="84"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="84"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+
+                            <Label x:Name="titleDay"     
                     Style="{StaticResource lbSt}"
                            Grid.Column="1"
                            Height="35.57px"
                            Width="607.4px"
                            Content="{Binding Day}"/>
-                <Border Grid.Row="1"
-                        Grid.ColumnSpan="3"
-                        Style="{StaticResource brdRasp}">
-                    <WrapPanel VerticalAlignment="Center">
-                        <TextBlock Style="{StaticResource txbSt}"
-                              Text="1"
-                              Width="47"/>
-                        <TextBlock x:Name="subjName" Style="{StaticResource txbSt}"
-                              Text="{Binding subjectname}"
-                              Width="408"/>
-                        <TextBlock x:Name="teachName" Style="{StaticResource txbSt}"
-                              Text="rrrrrrrr"
-                              Width="200"/>
-                        <TextBlock x:Name="timeCl" Style="{StaticResource txbSt}"
-                              Text="50:50"
-                              Width="45"/>
-                    </WrapPanel>
-                </Border>
+                            
+                                
+                                
+                                    
 
-                
-                
-                <Line Stroke="#3D6271"
+                                        <Border Grid.Row="1"
+                                                Grid.ColumnSpan="3"
+                                                Style="{StaticResource brdRasp}">
+                                            <WrapPanel VerticalAlignment="Center">
+                                    <TextBlock Style="{StaticResource txbSt}"
+                                                            
+                                                            Width="47">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{} {0}  {1}  {2} }">
+                                                <Binding Path="num"/>
+                                                <Binding Path="subjectname"/>
+                                                <Binding Path="timeStart"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <!--<TextBlock x:Name="subjName" Style="{StaticResource txbSt}"
+                                                            Text="{Binding subjectname}"
+                                                            Width="408"/>
+                                                <TextBlock x:Name="teachName" Style="{StaticResource txbSt}"
+                                                            Text="rrrrrrrr"
+                                                            Width="200"/>
+                                                <TextBlock x:Name="timeCl" Style="{StaticResource txbSt}"
+                                                            Text="{Binding timeStart}"
+                                                            Width="45"/>-->
+                                            </WrapPanel>
+                                        </Border>
+                                    
+                               
+                            
+
+
+
+                            <Line Stroke="#3D6271"
                       X1="3" Y1="14"
                       X2="3" Y2="250"
                       Grid.Column="1"
@@ -88,13 +111,13 @@
                       Grid.RowSpan="5"/>
 
 
-            </Grid>
-                </Border>
-            </DataTemplate>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
             </ListView.ItemTemplate>
 
         </ListView>
-        
-        
+
+
     </Grid>
 </Page>

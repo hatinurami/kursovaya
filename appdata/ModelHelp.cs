@@ -9,6 +9,15 @@ namespace elj.appdata
 {
     public partial class Shedule
     {
+        //public string DayOfWeek
+        //{
+        //    get
+        //    {
+        //        string day = da
+        //        return day;
+        //    }
+        //}
+
         //public string Rasp
         //{
         //    get

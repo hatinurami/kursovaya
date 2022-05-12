@@ -865,6 +865,7 @@
           <Property Type="Int32" Name="num" Nullable="false" />
           <Property Type="String" Name="Day" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="subjectname" Nullable="false" MaxLength="50" />
+          <Property Type="Time" Name="timeStart" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1051,6 +1052,7 @@
                 <ScalarProperty Name="num" ColumnName="num" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="subjectname" ColumnName="subjectname" />
+                <ScalarProperty Name="timeStart" ColumnName="timeStart" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
