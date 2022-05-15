@@ -34,6 +34,7 @@ namespace elj.appdata
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<StudentPerfomance> StudentPerfomance { get; set; }
         public virtual DbSet<StudGroup> StudGroup { get; set; }
+        public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<TeachSubject> TeachSubject { get; set; }
@@ -41,7 +42,15 @@ namespace elj.appdata
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<WeekDay> WeekDay { get; set; }
         public virtual DbSet<RaspGrEK32> RaspGrEK32 { get; set; }
-        public virtual DbSet<Subject> Subject { get; set; }
+    
+        public virtual ObjectResult<RaspGroup_Result> RaspGroup(Nullable<int> gr)
+        {
+            var grParameter = gr.HasValue ?
+                new ObjectParameter("gr", gr) :
+                new ObjectParameter("gr", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RaspGroup_Result>("RaspGroup", grParameter);
+        }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -144,15 +153,6 @@ namespace elj.appdata
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual ObjectResult<RaspGroup_Result> RaspGroup(Nullable<int> gr)
-        {
-            var grParameter = gr.HasValue ?
-                new ObjectParameter("gr", gr) :
-                new ObjectParameter("gr", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RaspGroup_Result>("RaspGroup", grParameter);
         }
     }
 }

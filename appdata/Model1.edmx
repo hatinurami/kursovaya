@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище elJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище elJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="idGender" />
@@ -408,7 +408,8 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="elJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -432,7 +433,7 @@
           <Key>
             <PropertyRef Name="idSchedule" />
           </Key>
-          <Property Name="idSchedule" Type="Int32" Nullable="false" />
+          <Property Name="idSchedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idGroup" Type="Int32" Nullable="false" />
           <Property Name="idTimeTable" Type="Int32" Nullable="false" />
           <Property Name="dayOfWeek" Type="Int16" Nullable="false" />
@@ -441,7 +442,6 @@
           <NavigationProperty Name="TeachSubject" Relationship="Self.FK_Shedule_TeachSubject" FromRole="Shedule" ToRole="TeachSubject" />
           <NavigationProperty Name="TimeTable" Relationship="Self.FK_Shedule_TimeTable" FromRole="Shedule" ToRole="TimeTable" />
           <NavigationProperty Name="WeekDay" Relationship="Self.FK_Shedule_WeekDay" FromRole="Shedule" ToRole="WeekDay" />
-          <NavigationProperty Name="StudentPerfomance" Relationship="Self.FK_StudentPerfomance_Shedule" FromRole="Shedule" ToRole="StudentPerfomance" />
         </EntityType>
         <EntityType Name="Speciality">
           <Key>
@@ -474,7 +474,6 @@
           <Property Name="attendMark" Type="Boolean" Nullable="false" />
           <Property Name="idSchedule" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Shedule" Relationship="Self.FK_StudentPerfomance_Shedule" FromRole="StudentPerfomance" ToRole="Shedule" />
           <NavigationProperty Name="Student" Relationship="Self.FK_StudentPerfomance_Student" FromRole="StudentPerfomance" ToRole="Student" />
         </EntityType>
         <EntityType Name="StudGroup">
@@ -489,6 +488,14 @@
           <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_StudGroup" FromRole="StudGroup" ToRole="Shedule" />
           <NavigationProperty Name="Speciality" Relationship="Self.FK_StudGroup_Speciality" FromRole="StudGroup" ToRole="Speciality" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Student_Group" FromRole="StudGroup" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="idSubj" />
+          </Key>
+          <Property Name="idSubj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subjectname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TeachSubject" Relationship="Self.FK_TeachSubject_Subject" FromRole="Subject" ToRole="TeachSubject" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -520,8 +527,8 @@
           <Property Name="idTeach" Type="Int32" Nullable="false" />
           <Property Name="idSubj" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_TeachSubject" FromRole="TeachSubject" ToRole="Shedule" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_TeachSubject_Subject" FromRole="TeachSubject" ToRole="Subject" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_TeachSubject_Teacher" FromRole="TeachSubject" ToRole="Teacher" />
-          <NavigationProperty Name="Subject" Relationship="elJournalModel.FK_TeachSubject_Subject" FromRole="TeachSubject" ToRole="Subject" />
         </EntityType>
         <EntityType Name="TimeTable">
           <Key>
@@ -555,6 +562,17 @@
           <Property Name="idDay" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nameDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_WeekDay" FromRole="WeekDay" ToRole="Shedule" />
+        </EntityType>
+        <EntityType Name="RaspGrEK32">
+          <Key>
+            <PropertyRef Name="Grouop" />
+            <PropertyRef Name="num" />
+            <PropertyRef Name="subjectname" />
+          </Key>
+          <Property Name="Grouop" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="num" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="subjectname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK_Users_Gender">
           <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
@@ -628,18 +646,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StudentPerfomance_Shedule">
-          <End Role="Shedule" Type="Self.Shedule" Multiplicity="1" />
-          <End Role="StudentPerfomance" Type="Self.StudentPerfomance" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shedule">
-              <PropertyRef Name="idSchedule" />
-            </Principal>
-            <Dependent Role="StudentPerfomance">
-              <PropertyRef Name="idSchedule" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_StudGroup_Speciality">
           <End Role="Speciality" Type="Self.Speciality" Multiplicity="1" />
           <End Role="StudGroup" Type="Self.StudGroup" Multiplicity="*" />
@@ -688,6 +694,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TeachSubject_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="TeachSubject" Type="Self.TeachSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="idSubj" />
+            </Principal>
+            <Dependent Role="TeachSubject">
+              <PropertyRef Name="idSubj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Teacher_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
@@ -720,12 +738,14 @@
           <EntitySet Name="Student" EntityType="Self.Student" />
           <EntitySet Name="StudentPerfomance" EntityType="Self.StudentPerfomance" />
           <EntitySet Name="StudGroup" EntityType="Self.StudGroup" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" />
           <EntitySet Name="TeachSubject" EntityType="Self.TeachSubject" />
           <EntitySet Name="TimeTable" EntityType="Self.TimeTable" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="WeekDay" EntityType="Self.WeekDay" />
+          <EntitySet Name="RaspGrEK32" EntityType="Self.RaspGrEK32" />
           <AssociationSet Name="FK_Users_Gender" Association="Self.FK_Users_Gender">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="Users" EntitySet="Users" />
@@ -750,10 +770,6 @@
             <End Role="WeekDay" EntitySet="WeekDay" />
             <End Role="Shedule" EntitySet="Shedule" />
           </AssociationSet>
-          <AssociationSet Name="FK_StudentPerfomance_Shedule" Association="Self.FK_StudentPerfomance_Shedule">
-            <End Role="Shedule" EntitySet="Shedule" />
-            <End Role="StudentPerfomance" EntitySet="StudentPerfomance" />
-          </AssociationSet>
           <AssociationSet Name="FK_StudGroup_Speciality" Association="Self.FK_StudGroup_Speciality">
             <End Role="Speciality" EntitySet="Speciality" />
             <End Role="StudGroup" EntitySet="StudGroup" />
@@ -770,6 +786,10 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="StudentPerfomance" EntitySet="StudentPerfomance" />
           </AssociationSet>
+          <AssociationSet Name="FK_TeachSubject_Subject" Association="Self.FK_TeachSubject_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="TeachSubject" EntitySet="TeachSubject" />
+          </AssociationSet>
           <AssociationSet Name="FK_Teacher_Users" Association="Self.FK_Teacher_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Teacher" EntitySet="Teacher" />
@@ -778,7 +798,9 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="TeachSubject" EntitySet="TeachSubject" />
           </AssociationSet>
-          <EntitySet Name="RaspGrEK32" EntityType="elJournalModel.RaspGrEK32" />
+          <FunctionImport Name="RaspGroup" ReturnType="Collection(elJournalModel.RaspGroup_Result)">
+            <Parameter Name="gr" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -809,26 +831,15 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="Subject" EntityType="elJournalModel.Subject" />
-          <AssociationSet Name="FK_TeachSubject_Subject" Association="elJournalModel.FK_TeachSubject_Subject">
-            <End Role="Subject" EntitySet="Subject" />
-            <End Role="TeachSubject" EntitySet="TeachSubject" />
-          </AssociationSet>
-          <FunctionImport Name="RaspGroup" ReturnType="Collection(elJournalModel.RaspGroup_Result)">
-          <Parameter Name="gr" Mode="In" Type="Int32" />
-          </FunctionImport>
         </EntityContainer>
-        <EntityType Name="RaspGrEK32">
-          <Key>
-            <PropertyRef Name="Grouop" />
-            <PropertyRef Name="num" />
-            <PropertyRef Name="subjectname" />
-          </Key>
-          <Property Name="Grouop" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="num" Type="Int32" Nullable="false" />
-          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="subjectname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
+        <ComplexType Name="RaspGroup_Result">
+          <Property Type="String" Name="Grouop" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="num" Nullable="false" />
+          <Property Type="Time" Name="timeStart" Nullable="false" />
+          <Property Type="String" Name="Day" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="subjectname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="teachName" Nullable="true" MaxLength="92" />
+        </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -839,33 +850,6 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="Subject">
-          <Key>
-            <PropertyRef Name="idSubj" />
-          </Key>
-          <Property Name="idSubj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="subjectname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TeachSubject" Relationship="elJournalModel.FK_TeachSubject_Subject" FromRole="Subject" ToRole="TeachSubject" />
-        </EntityType>
-        <Association Name="FK_TeachSubject_Subject">
-          <End Type="elJournalModel.Subject" Role="Subject" Multiplicity="1" />
-          <End Type="elJournalModel.TeachSubject" Role="TeachSubject" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Subject">
-              <PropertyRef Name="idSubj" />
-            </Principal>
-            <Dependent Role="TeachSubject">
-              <PropertyRef Name="idSubj" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="RaspGroup_Result">
-          <Property Type="String" Name="Grouop" Nullable="false" MaxLength="30" />
-          <Property Type="Int32" Name="num" Nullable="false" />
-          <Property Type="String" Name="Day" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="subjectname" Nullable="false" MaxLength="50" />
-          <Property Type="Time" Name="timeStart" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -942,6 +926,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Subject">
+            <EntityTypeMapping TypeName="elJournalModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="idSubj" ColumnName="idSubj" />
+                <ScalarProperty Name="subjectname" ColumnName="subjectname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="elJournalModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -1006,13 +998,25 @@
           <EntitySetMapping Name="RaspGrEK32">
             <EntityTypeMapping TypeName="elJournalModel.RaspGrEK32">
               <MappingFragment StoreEntitySet="RaspGrEK32">
-                <ScalarProperty Name="subjectname" ColumnName="subjectname" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="num" ColumnName="num" />
                 <ScalarProperty Name="Grouop" ColumnName="Grouop" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="subjectname" ColumnName="subjectname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RaspGroup" FunctionName="Хранилище elJournalModel.RaspGroup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="elJournalModel.RaspGroup_Result">
+                <ScalarProperty Name="Grouop" ColumnName="Grouop" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="subjectname" ColumnName="subjectname" />
+                <ScalarProperty Name="teachName" ColumnName="teachName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище elJournalModel.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище elJournalModel.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище elJournalModel.sp_dropdiagram" />
@@ -1037,25 +1041,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище elJournalModel.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище elJournalModel.sp_upgraddiagrams" />
-          <EntitySetMapping Name="Subject">
-            <EntityTypeMapping TypeName="elJournalModel.Subject">
-              <MappingFragment StoreEntitySet="Subject">
-                <ScalarProperty Name="subjectname" ColumnName="subjectname" />
-                <ScalarProperty Name="idSubj" ColumnName="idSubj" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="RaspGroup" FunctionName="Хранилище elJournalModel.RaspGroup">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="elJournalModel.RaspGroup_Result">
-                <ScalarProperty Name="Grouop" ColumnName="Grouop" />
-                <ScalarProperty Name="num" ColumnName="num" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="subjectname" ColumnName="subjectname" />
-                <ScalarProperty Name="timeStart" ColumnName="timeStart" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

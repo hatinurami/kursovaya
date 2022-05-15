@@ -64,36 +64,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="appdata\ModelHelp.cs" />
-    <Compile Include="appdata\RaspGrEK32.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="appdata\RaspGroup_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="appdata\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="appdata\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Settings.cs" />
-    <Compile Include="windows\Autoriz.xaml.cs">
-      <DependentUpon>Autoriz.xaml</DependentUpon>
-    </Compile>
-    <Page Include="frames\PageRasp.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="windows\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="appdata\DBapp.cs" />
     <Compile Include="appdata\Gender.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -112,13 +82,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="appdata\ModelHelp.cs" />
     <Compile Include="appdata\Position.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="appdata\RaspGrEK32.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="appdata\RaspGroup_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="appdata\Shedule.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="appdata\Speciality.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="appdata\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="appdata\sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="appdata\Student.cs">
@@ -151,6 +134,30 @@
     <Compile Include="appdata\WeekDay.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="frames\Marks.xaml.cs">
+      <DependentUpon>Marks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="windows\Autoriz.xaml.cs">
+      <DependentUpon>Autoriz.xaml</DependentUpon>
+    </Compile>
+    <Page Include="frames\Marks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frames\PageRasp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="appdata\DBapp.cs" />
     <Compile Include="frames\PageRasp.xaml.cs">
       <DependentUpon>PageRasp.xaml</DependentUpon>
     </Compile>
@@ -206,18 +213,19 @@
     <Resource Include="pic\logo3.png" />
     <Resource Include="pic\logoej.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="appdata\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="appdata\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="pic\gg_close-r.png" />
   </ItemGroup>
   <ItemGroup>

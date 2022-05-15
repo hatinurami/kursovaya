@@ -6,118 +6,413 @@
       xmlns:local="clr-namespace:elj.frames"
       mc:Ignorable="d" 
       d:DesignHeight="582" d:DesignWidth="867"
-      Title="PageRasp"
-      Loaded="Page_Loaded">
+      Title="PageRasp">
     <Grid>
 
-        
-
-
-
-        <ListView x:Name="listRasp"
-                  Background="Transparent"
-                  
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  ScrollViewer.VerticalScrollBarVisibility="Disabled">
-            
-            <ListView.ItemTemplate>
-
-
-                <DataTemplate>
-                    <Border Margin="30"
+        <ScrollViewer>
+            <StackPanel>
+                <Border Margin="30"
                             Height="auto"
                             CornerRadius="45" Style="{StaticResource brdSt}">
+                    <Grid>
 
-                        <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="84"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="84"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="84"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="84"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition Height="50"/>
-                            </Grid.RowDefinitions>
-
-                            <Label x:Name="titleDay"     
+                        <Label x:Name="titleDay"     
                     Style="{StaticResource lbSt}"
                            Grid.Column="1"
-                           Height="35.57px"
+                           Height="45.57px"
                            Width="607.4px"
-                           Content="{Binding Day}"/>
-                            
-                                
-                                
-                                    
+                           Content="Понедельник"/>
+                        <ListView x:Name="listRasp"
+                              Grid.Row="1"
+                              Grid.RowSpan="4"
+                              BorderThickness="0"
+                                  HorizontalAlignment="Center"
+                                  Grid.ColumnSpan="3"
+                                  Height="auto"
+                             >
 
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Grid.Row="1"
+                                                Grid.ColumnSpan="3"
+                                                Style="{StaticResource brdRasp}">
+                                        <WrapPanel VerticalAlignment="Center">
+                                            <TextBlock Style="{StaticResource txbSt}" 
+                                                       
+                                                   
+                                                   Text="{Binding num}"
+                                                   Width="49">
+                                            </TextBlock>
+
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding subjectname}"
+                                                   Width="305"/>
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding teachName}"
+                                                   Width="300"/>
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding timeStarrt}"
+                                                   
+                                                   Width="50"/>
+                                        </WrapPanel>
+
+                                    </Border>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+
+
+
+
+
+                    </Grid>
+                </Border>
+                <Border Margin="30"
+                            Height="auto"
+                            CornerRadius="45"
+                        Style="{StaticResource brdSt}">
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="84"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="84"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="titleDay1"     
+                    Style="{StaticResource lbSt}"
+                           Grid.Column="1"
+                           Height="45.57px"
+                           Width="607.4px"
+                           Content="Вторник"/>
+                        <ListView x:Name="listRasp1"
+                              Grid.Row="1"
+                              Grid.RowSpan="4"
+                              BorderThickness="0"
+                                  HorizontalAlignment="Center"
+                                  Grid.ColumnSpan="3"
+                                  Height="auto">
+
+                            <ListView.ItemTemplate>
+                               
+                                    <DataTemplate>
                                         <Border Grid.Row="1"
                                                 Grid.ColumnSpan="3"
                                                 Style="{StaticResource brdRasp}">
                                             <WrapPanel VerticalAlignment="Center">
-                                    <TextBlock Style="{StaticResource txbSt}"
-                                                            
-                                                            Width="47">
-                                        <TextBlock.Text>
-                                            <MultiBinding StringFormat="{} {0}  {1}  {2} }">
-                                                <Binding Path="num"/>
-                                                <Binding Path="subjectname"/>
-                                                <Binding Path="timeStart"/>
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
-                                    <!--<TextBlock x:Name="subjName" Style="{StaticResource txbSt}"
-                                                            Text="{Binding subjectname}"
-                                                            Width="408"/>
-                                                <TextBlock x:Name="teachName" Style="{StaticResource txbSt}"
-                                                            Text="rrrrrrrr"
-                                                            Width="200"/>
-                                                <TextBlock x:Name="timeCl" Style="{StaticResource txbSt}"
-                                                            Text="{Binding timeStart}"
-                                                            Width="45"/>-->
+                                                <TextBlock Style="{StaticResource txbSt}" 
+                                                       
+                                                   
+                                                   Text="{Binding num}"
+                                                   Width="49">
+                                                </TextBlock>
+
+                                                <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding subjectname}"
+                                                   Width="305"/>
+                                                <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding teachName}"
+                                                   Width="300"/>
+                                                <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding timeStarrt}"
+                                                   
+                                                   Width="50"/>
                                             </WrapPanel>
+
                                         </Border>
-                                    
+
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                        </ListView>
+
+                        
+                    </Grid>
+                </Border>
+                <Border Margin="30"
+                            Height="auto"
+                            CornerRadius="45" Style="{StaticResource brdSt}">
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="84"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="84"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="titleDay2"     
+                    Style="{StaticResource lbSt}"
+                           Grid.Column="1"
+                           Height="45.57px"
+                           Width="607.4px"
+                           Content="Среда"/>
+                        <ListView x:Name="listRasp2"
+                              Grid.Row="1"
+                              Grid.RowSpan="4"
+                              BorderThickness="0"
+                              Grid.ColumnSpan="4"
+                              HorizontalAlignment="Center">
+
+                            <ListView.ItemTemplate>
                                
-                            
+                                    <DataTemplate>
+                                        <Border Grid.Row="1"
+                                                Grid.ColumnSpan="3"
+                                                Style="{StaticResource brdRasp}">
+                                            <WrapPanel VerticalAlignment="Center">
+                                                <TextBlock Style="{StaticResource txbSt}" 
+                                                       
+                                                   
+                                                   Text="{Binding num}"
+                                                   Width="49">
+                                                </TextBlock>
 
+                                                <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding subjectname}"
+                                                   Width="305"/>
+                                                <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding teachName}"
+                                                   Width="300"/>
+                                                <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding timeStarrt}"
+                                                   
+                                                   Width="50"/>
+                                            </WrapPanel>
 
+                                        </Border>
 
-                            <Line Stroke="#3D6271"
-                      X1="3" Y1="14"
-                      X2="3" Y2="250"
-                      Grid.Column="1"
-                      StrokeThickness="2"
-                      Grid.Row="0"
-                      Grid.RowSpan="5"/>
-                
-                <Line Stroke="#3D6271"
-                      X1="408" Y1="4"
-                      X2="408" Y2="200"
-                      Grid.Column="1"
-                      StrokeThickness="4"
-                      Grid.Row="1"
-                      Grid.RowSpan="5"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                        </ListView>
 
-                <Line Stroke="#3D6271"
-                      X1="608" Y1="14"
-                      X2="608" Y2="250"
-                      Grid.Column="1"
-                      StrokeThickness="2"
-                      Grid.Row="0"
-                      Grid.RowSpan="5"/>
+                       
+                    </Grid>
+                </Border>
+                <Border Margin="30"
+                            Height="auto"
+                            CornerRadius="45" Style="{StaticResource brdSt}">
+                    <Grid>
 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="84"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="84"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
 
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+                        <Label x:Name="titleDay3"     
+                    Style="{StaticResource lbSt}"
+                           Grid.Column="1"
+                           Height="45.57px"
+                           Width="607.4px"
+                           Content="Четверг"/>
+                        <ListView x:Name="listRasp3"
+                              Grid.Row="1"
+                              Grid.RowSpan="4"
+                              BorderThickness="0"
+                              Grid.ColumnSpan="4"
+                              HorizontalAlignment="Center">
 
-        </ListView>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Grid.Row="1"
+                                                Grid.ColumnSpan="3"
+                                                Style="{StaticResource brdRasp}">
+                                        <WrapPanel VerticalAlignment="Center">
+                                            <TextBlock Style="{StaticResource txbSt}" 
+                                                       
+                                                   
+                                                   Text="{Binding num}"
+                                                   Width="49">
+                                            </TextBlock>
 
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding subjectname}"
+                                                   Width="305"/>
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding teachName}"
+                                                   Width="300"/>
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding timeStarrt}"
+                                                   
+                                                   Width="50"/>
+                                        </WrapPanel>
+
+                                    </Border>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                       
+                    </Grid>
+                </Border>
+                <Border Margin="30"
+                            Height="auto"
+                            CornerRadius="45" Style="{StaticResource brdSt}">
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="84"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="84"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="titleDay4"     
+                    Style="{StaticResource lbSt}"
+                           Grid.Column="1"
+                           Height="45.57px"
+                           Width="607.4px"
+                           Content="Пятница"/>
+                        <ListView x:Name="listRasp4"
+                              Grid.Row="1"
+                              Grid.RowSpan="4"
+                              BorderThickness="0"
+                              Grid.ColumnSpan="4"
+                              HorizontalAlignment="Center">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Grid.Row="1"
+                                                Grid.ColumnSpan="3"
+                                                Style="{StaticResource brdRasp}">
+                                        <WrapPanel VerticalAlignment="Center">
+                                            <TextBlock Style="{StaticResource txbSt}" 
+                                                       
+                                                   
+                                                   Text="{Binding num}"
+                                                   Width="49">
+                                            </TextBlock>
+
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding subjectname}"
+                                                   Width="305"/>
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding teachName}"
+                                                   Width="300"/>
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding timeStarrt}"
+                                                   
+                                                   Width="50"/>
+                                        </WrapPanel>
+
+                                    </Border>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        
+                    </Grid>
+                </Border>
+                <Border Margin="30"
+                            Height="auto"
+                            CornerRadius="45" Style="{StaticResource brdSt}">
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="84"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="84"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="titleDay5"     
+                    Style="{StaticResource lbSt}"
+                           Grid.Column="1"
+                           Height="45.57px"
+                           Width="607.4px"
+                           Content="Суббота"/>
+                        <ListView x:Name="listRasp5"
+                              Grid.Row="1"
+                              Grid.RowSpan="4"
+                              BorderThickness="0"
+                              Grid.ColumnSpan="4"
+                              HorizontalAlignment="Center">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Grid.Row="1"
+                                                Grid.ColumnSpan="3"
+                                                Style="{StaticResource brdRasp}">
+                                        <WrapPanel VerticalAlignment="Center">
+                                            <TextBlock Style="{StaticResource txbSt}" 
+                                                       
+                                                   
+                                                   Text="{Binding num}"
+                                                   Width="49">
+                                            </TextBlock>
+
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding subjectname}"
+                                                   Width="305"/>
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding teachName}"
+                                                   Width="300"/>
+                                            <TextBlock Style="{StaticResource txbSt}"
+                                                   Text="{Binding timeStarrt}"
+                                                   
+                                                   Width="50"/>
+                                        </WrapPanel>
+
+                                    </Border>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </Page>

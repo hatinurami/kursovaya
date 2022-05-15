@@ -21,17 +21,33 @@ namespace elj.windows
     /// </summary>
     public partial class MainWindow : Window
     {
+        int usr;
         public MainWindow(int a)
         {
-
+            usr = a;
             InitializeComponent();
-            mainFrame.Navigate(new PageRasp(a));
+            mainFrame.Navigate(new PageRasp(usr));
 
         }
 
         private void extClick(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void btnRasp_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new PageRasp(usr));
+        }
+
+        private void btnMark_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new Marks(usr));
+        }
+
+        private void btnKab_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -15,8 +15,9 @@ namespace elj.appdata
     {
         public string Grouop { get; set; }
         public int num { get; set; }
+        public System.TimeSpan timeStart { get; set; }
         public string Day { get; set; }
         public string subjectname { get; set; }
-        public System.TimeSpan timeStart { get; set; }
+        public string teachName { get; set; }
     }
 }

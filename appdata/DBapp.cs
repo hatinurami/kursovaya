@@ -10,12 +10,12 @@ namespace elj.appdata
 {
     public static class DBapp
     {
-
         public static elJournalEntities context = new elJournalEntities();
         public static Student autst = new Student();
         public static Teacher auttch = new Teacher();
 
-        
+        public static List<RaspGroup_Result> ob = new List<RaspGroup_Result>();
+       
       
 
         

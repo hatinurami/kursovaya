@@ -26,20 +26,25 @@ namespace elj.frames
         {
             InitializeComponent();
             GroupSt = a;
+            Update();
         }
 
         private void Update()
         {
-
-            listRasp.ItemsSource = context.RaspGroup(GroupSt);
-            
-            
+            ob = context.RaspGroup(GroupSt).ToList();
+            RaspAdd();
 
         }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void RaspAdd()
         {
-            Update();
+            listRasp.ItemsSource = ob.Where(i => i.Day == titleDay.Content.ToString()).ToList();
+            listRasp1.ItemsSource = ob.Where(i => i.Day == titleDay1.Content.ToString()).ToList();
+            listRasp2.ItemsSource = ob.Where(i => i.Day == titleDay2.Content.ToString()).ToList();
+            listRasp3.ItemsSource = ob.Where(i => i.Day == titleDay3.Content.ToString()).ToList();
+            listRasp4.ItemsSource = ob.Where(i => i.Day == titleDay4.Content.ToString()).ToList();
+            listRasp5.ItemsSource = ob.Where(i => i.Day == titleDay5.Content.ToString()).ToList();
         }
+
+       
     }
 }

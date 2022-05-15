@@ -31,15 +31,18 @@
                     Margin="10 0"
                     VerticalAlignment="Center">
                     <Button x:Name="btnRasp"                    
-                    Content="Расписание"
-                    Style="{DynamicResource btnSt}"/>
+                            Content="Расписание"
+                            Style="{DynamicResource btnSt}"
+                            Click="btnRasp_Click"/>
                     <Button x:Name="btnMark"                    
-                    Content="Оценки"
-                        Style="{DynamicResource btnSt}"/>
+                            Content="Оценки"
+                            Style="{DynamicResource btnSt}"
+                            Click="btnMark_Click"/>
                     <Button x:Name="btnKab"                   
-                    Content="Личный кабинет"
-                        Width="235"
-                        Style="{DynamicResource btnSt}"/>
+                            Content="Личный кабинет"
+                            Width="235"
+                            Style="{DynamicResource btnSt}"
+                            Click="btnKab_Click"/>
 
                 </WrapPanel>
                 <Button x:Name="exitBttn"                     
@@ -93,6 +96,7 @@
                x:Name="mainFrame"
               Height="582px"
                Width="867px"
+               NavigationUIVisibility="Hidden"
                Background="#E4F1F6"
               HorizontalAlignment="Left" 
                VerticalAlignment="Top" >

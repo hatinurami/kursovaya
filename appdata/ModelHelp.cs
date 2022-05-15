@@ -7,24 +7,16 @@ using static elj.appdata.DBapp;
 
 namespace elj.appdata
 {
-    public partial class Shedule
+    public partial class RaspGroup_Result
     {
-        //public string DayOfWeek
-        //{
-        //    get
-        //    {
-        //        string day = da
-        //        return day;
-        //    }
-        //}
+        public string timeStarrt
+        {
+            get
+            {
+                string ts = $"{timeStart.Hours}:{timeStart.Minutes}";
+                return ts;
+            }
+        }
 
-        //public string Rasp
-        //{
-        //    get
-        //    {
-                
-        //        return;
-        //    }
-        //}
     }
 }

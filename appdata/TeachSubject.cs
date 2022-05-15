@@ -26,7 +26,7 @@ namespace elj.appdata
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shedule> Shedule { get; set; }
-        public virtual Teacher Teacher { get; set; }
         public virtual Subject Subject { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }
