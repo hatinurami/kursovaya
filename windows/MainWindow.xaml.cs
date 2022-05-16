@@ -21,12 +21,12 @@ namespace elj.windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        int usr;
+        int usrgr;
         public MainWindow(int a)
         {
-            usr = a;
+            usrgr = a;
             InitializeComponent();
-            mainFrame.Navigate(new PageRasp(usr));
+            mainFrame.Navigate(new PageRasp(usrgr));
 
         }
 
@@ -37,17 +37,19 @@ namespace elj.windows
 
         private void btnRasp_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new PageRasp(usr));
+            mainFrame.Navigate(new PageRasp(usrgr));
         }
 
         private void btnMark_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new Marks(usr));
+            int idSt = appdata.DBapp.autst.idStud;
+            mainFrame.Navigate(new Marks(idSt));
         }
 
         private void btnKab_Click(object sender, RoutedEventArgs e)
         {
-
+            int idSt = appdata.DBapp.autst.Users.idUser;
+            mainFrame.Navigate(new Account(idSt));
         }
     }
 }

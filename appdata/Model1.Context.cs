@@ -154,5 +154,14 @@ namespace elj.appdata
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<MarkStud_Result> MarkStud(Nullable<int> idSt)
+        {
+            var idStParameter = idSt.HasValue ?
+                new ObjectParameter("idSt", idSt) :
+                new ObjectParameter("idSt", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MarkStud_Result>("MarkStud", idStParameter);
+        }
     }
 }

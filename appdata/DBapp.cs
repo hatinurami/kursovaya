@@ -14,6 +14,7 @@ namespace elj.appdata
         public static Student autst = new Student();
         public static Teacher auttch = new Teacher();
 
+        public static List<MarkStud_Result> msr = new List<MarkStud_Result>();
         public static List<RaspGroup_Result> ob = new List<RaspGroup_Result>();
        
       

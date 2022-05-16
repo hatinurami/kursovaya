@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище elJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище elJournalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="idGender" />
@@ -50,7 +50,7 @@
           <Key>
             <PropertyRef Name="idStudPerf" />
           </Key>
-          <Property Name="idStudPerf" Type="int" Nullable="false" />
+          <Property Name="idStudPerf" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idStud" Type="int" Nullable="false" />
           <Property Name="mark" Type="smallint" Nullable="false" />
           <Property Name="attendMark" Type="bit" Nullable="false" />
@@ -299,6 +299,9 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="MarkStud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idSt" Type="int" Mode="In" />
+        </Function>
         <Function Name="RaspGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="gr" Type="int" Mode="In" />
         </Function>
@@ -408,8 +411,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="elJournalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -799,7 +801,7 @@
             <End Role="TeachSubject" EntitySet="TeachSubject" />
           </AssociationSet>
           <FunctionImport Name="RaspGroup" ReturnType="Collection(elJournalModel.RaspGroup_Result)">
-            <Parameter Name="gr" Mode="In" Type="Int32" />
+          <Parameter Name="gr" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -831,6 +833,9 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="MarkStud" ReturnType="Collection(elJournalModel.MarkStud_Result)">
+            <Parameter Name="idSt" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="RaspGroup_Result">
           <Property Type="String" Name="Grouop" Nullable="false" MaxLength="30" />
@@ -850,6 +855,10 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="MarkStud_Result">
+          <Property Type="Int16" Name="Оценки" Nullable="false" />
+          <Property Type="String" Name="Дисциплина" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1041,6 +1050,14 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище elJournalModel.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище elJournalModel.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="MarkStud" FunctionName="Хранилище elJournalModel.MarkStud">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="elJournalModel.MarkStud_Result">
+                <ScalarProperty Name="Оценки" ColumnName="Оценки" />
+                <ScalarProperty Name="Дисциплина" ColumnName="Дисциплина" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

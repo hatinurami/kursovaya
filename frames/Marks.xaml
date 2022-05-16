@@ -5,10 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:elj.frames"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="582" d:DesignWidth="867"
       Title="Marks">
 
     <Grid>
-        
+        <DataGrid x:Name="MarkGrid"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Предмет"/>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="Дисциплина"/>
+                    </DataGridTextColumn.Binding>
+                    
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
