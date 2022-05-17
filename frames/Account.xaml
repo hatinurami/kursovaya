@@ -9,41 +9,101 @@
       Title="Account">
 
     <Grid>
-        <Border CornerRadius="7"
-               
-                >
+        <Border CornerRadius="7">
 
-                <GroupBox Header="Данные для входа"
+            <GroupBox Header="Данные для входа"
                       FontSize="20"
-                      
                       Height="200"
-                      Width="200" Background="White">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                    <StackPanel 
-                            Margin="0 10"
-                            >
-                        <TextBlock Text="Логин"
-                                   Margin="7"
-                                   FontSize="20"/>
-                        <TextBlock Text="Пароль" 
-                                   Margin="7"
-                                   FontSize="20"/>
+                      Width="260"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Margin="20"
+                          Background="White">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28*"/>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="36*"/>
+                        <RowDefinition Height="19*"/>
+                        <RowDefinition Height="28*"/>
+                        <RowDefinition Height="28*"/>
+                    </Grid.RowDefinitions>
 
-                        <Button Content="Изменить"
-                            FontSize="15"
-                            Margin="5"/>
+                    <TextBlock Grid.Row="1"
+                            Text="Логин"
+                                   Style="{StaticResource txbSt}"
+                                   Margin="7,0,7,0"
+                                   FontSize="16" Height="19"/>
 
+                    <TextBlock Text="Пароль" 
+                                   Margin="7,0,7,0"
+                                   Grid.Row="2"
+                                   Style="{StaticResource txbSt}"
+                                   FontSize="16" Height="19"/>
+
+                    <Button Content="Изменить"
+                                x:Name="edit_btn"
+                                FontSize="15"
+                                Margin="8,11,9,12"
+                                Grid.Row="3"
+                                Grid.RowSpan="2"
+                            Grid.ColumnSpan="2"
+                                Height="Auto"
+                                Foreground="Black"
+                                Width="Auto"
+                                
+                                Style="{StaticResource btnSt}"
+                                Click="edit_btn_Click"/>
+                    <Button Content="Сохранить"
+                                x:Name="save_btn"
+                                FontSize="15"
+                                Margin="8,11,9,12"
+                                Grid.Row="3"
+                            Grid.ColumnSpan="2"
+                                Grid.RowSpan="2"
+                            Visibility="Collapsed"
+                                Height="Auto"
+                                Foreground="Black"
+                                Width="Auto"
+                                Style="{StaticResource btnSt}"
+                            Click="save_btn_Click"/>
+
+
+                    <StackPanel  Grid.Row="1"
+                                 Margin="7,7,7,7"
+                                 Grid.Column="1">
+
+                        <TextBlock  Text="{Binding login}"
+                                 x:Name="logBlk"
+                                 FontSize="12"/>
+
+                        <TextBox  Visibility="Collapsed"
+                                  
+                                 x:Name="logEdit"
+                                 FontSize="11"/>
                     </StackPanel>
 
+                    <StackPanel  Grid.Row="2"
+                                 Margin="7,7,7,7"
+                                 Grid.Column="1">
+                        <TextBlock  
+                                 x:Name="pasBlk"
+                            Text="*********"
+                                 FontSize="15"
+                            />
+                        <TextBox  Visibility="Collapsed"
+                                  Text="{Binding password}"
+                                 x:Name="pasEdit"
+                                 FontSize="11"/>
+                    </StackPanel>
 
+                </Grid>
+            </GroupBox>
 
-            </Grid>
-                </GroupBox>
-            
         </Border>
     </Grid>
 </Page>

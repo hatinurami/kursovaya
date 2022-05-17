@@ -48,8 +48,8 @@ namespace elj.windows
 
         private void btnKab_Click(object sender, RoutedEventArgs e)
         {
-            int idSt = appdata.DBapp.autst.Users.idUser;
-            mainFrame.Navigate(new Account(idSt));
+            int idUs = appdata.DBapp.autst.Users.idUser;
+            mainFrame.Navigate(new Account(idUs));
         }
     }
 }
