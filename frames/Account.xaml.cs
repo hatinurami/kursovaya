@@ -39,17 +39,14 @@ namespace elj.frames
 
             string _name = userdata.Select(c => c.fName).FirstOrDefault().ToString();
             string _patr = userdata.Select(c => c.patronim).FirstOrDefault().ToString();
-            string _fname = userdata.Select(c => c.fName).FirstOrDefault().ToString();
+            string _fname = userdata.Select(c => c.lName).FirstOrDefault().ToString();
 
             logBlk.Text = userdata.Select(c => c.login).FirstOrDefault();
             fioTxt.Text = $"{_name} {_patr} {_fname} | студент группы {usergroup}";
-
+            dobSt.Text = $"Дата рождения {userdata.Select(c => c.dateOfBirth.ToShortDateString()).FirstOrDefault()}";
         }
 
-        private void AddData()
-        {
-            
-        }
+        
         
            
         
@@ -57,6 +54,7 @@ namespace elj.frames
 
         private void save_btn_Click(object sender, RoutedEventArgs e)
         {
+            
             var userdata = DBapp.context.Users.Where(i => i.idUser == Usrr).FirstOrDefault();
             userdata.login = logEdit.Text;
             logBlk.Text = logEdit.Text;
@@ -91,5 +89,26 @@ namespace elj.frames
             edit_btn.Visibility = Visibility.Collapsed;
 
         }
+
+        //private void savepd_btn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var userdata = DBapp.context.Users.Where(i => i.idUser == Usrr).FirstOrDefault();
+        //    userdata.login = logEdit.Text;
+        //    logBlk.Text = logEdit.Text;
+        //    userdata.password = pasEdit.Text;
+        //    DBapp.context.SaveChanges();
+        //    MessageBox.Show("Данные обновлены");
+
+        //    logBlk.Visibility = Visibility.Visible;
+        //    logEdit.Visibility = Visibility.Collapsed;
+        //    logBlk.Text = logEdit.Text;
+
+        //    pasBlk.Visibility = Visibility.Visible;
+        //    pasEdit.Visibility = Visibility.Collapsed;
+
+
+        //    save_btn.Visibility = Visibility.Collapsed;
+        //    edit_btn.Visibility = Visibility.Visible;
+        //}
     }
 }

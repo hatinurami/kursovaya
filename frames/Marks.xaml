@@ -11,15 +11,12 @@
     <Grid>
         <DataGrid x:Name="MarkGrid"
                   AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn>
-                    <DataGridTextColumn.Header>
-                        <TextBlock Text="Предмет"/>
-                    </DataGridTextColumn.Header>
-                    <DataGridTextColumn.Binding>
-                        <Binding Path="Дисциплина"/>
-                    </DataGridTextColumn.Binding>
-                    
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Предмет"
+                                     Binding="{Binding Дисциплина}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Оценки"
+                                     Binding="{Binding Оценки}">
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

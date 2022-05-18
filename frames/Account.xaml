@@ -109,7 +109,7 @@
         </GroupBox>
         <GroupBox Header="Персональные данные"
                   FontSize="20"
-                  Margin="30"
+                  Margin="50"
                   Background="White">
 
             <Grid>
@@ -118,7 +118,7 @@
                     <ColumnDefinition Width="133*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel>
+                <StackPanel VerticalAlignment="Top">
                      <TextBlock x:Name="fioTxt"
                            Text="Имя Отчество Фамилия | студент группы 3333"
                                 TextWrapping="Wrap"
@@ -127,18 +127,29 @@
                
                 <TextBlock Text="Дата рождения"
                            FontSize="18"
+                           x:Name="dobSt"
                            Margin="7,7,7,7"/>
-                <Button x:Name="editPD"
+                
+                
+                </StackPanel>
+               <!--<Button x:Name="editPD"
                         Content="Изменить"
                         Height="Auto"
                         Foreground="Black"
+                       VerticalAlignment="Bottom"
                         FontSize="16"
                         Margin="10 150 0 0"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Stretch"
                         Style="{StaticResource btnSt}" Width="184"/>
-                <TextBlock />
-                </StackPanel>
-               
+                <Button Content="Сохранить"
+                                x:Name="savepd_btn"
+                                FontSize="15"                                                              
+                                Visibility="Collapsed"
+                                Foreground="Black"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                Style="{StaticResource btnSt}"
+                                Click="savepd_btn_Click"/>-->
                 
             </Grid>
 
