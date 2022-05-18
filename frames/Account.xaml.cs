@@ -33,10 +33,27 @@ namespace elj.frames
         private void Update()
         {
             var userdata = DBapp.context.Users.Where(i => i.idUser == Usrr).ToList();
+            var usergroupid = DBapp.context.Student.Where(i => i.idUser == Usrr).Select(c => c.studGroup).FirstOrDefault();
+            string usergroup = DBapp.context.StudGroup.Where(i => i.idGroup == usergroupid).Select(c => c.groupName).FirstOrDefault().ToString();
+
+
+            string _name = userdata.Select(c => c.fName).FirstOrDefault().ToString();
+            string _patr = userdata.Select(c => c.patronim).FirstOrDefault().ToString();
+            string _fname = userdata.Select(c => c.fName).FirstOrDefault().ToString();
 
             logBlk.Text = userdata.Select(c => c.login).FirstOrDefault();
+            fioTxt.Text = $"{_name} {_patr} {_fname} | студент группы {usergroup}";
 
         }
+
+        private void AddData()
+        {
+            
+        }
+        
+           
+        
+        
 
         private void save_btn_Click(object sender, RoutedEventArgs e)
         {
