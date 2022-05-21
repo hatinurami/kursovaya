@@ -137,12 +137,14 @@
     <Compile Include="appdata\WeekDay.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="chtoeto\TableCreate.cs" />
     <Compile Include="frames\Account.xaml.cs">
       <DependentUpon>Account.xaml</DependentUpon>
     </Compile>
     <Compile Include="frames\Marks.xaml.cs">
       <DependentUpon>Marks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frames\Zavuch.xaml.cs">
+      <DependentUpon>Zavuch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="windows\Autoriz.xaml.cs">
@@ -157,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="frames\PageRasp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frames\Zavuch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

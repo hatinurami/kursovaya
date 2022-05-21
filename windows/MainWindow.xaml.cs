@@ -26,6 +26,7 @@ namespace elj.windows
         {
             usrgr = a;
             InitializeComponent();
+            CalendarWind();
             mainFrame.Navigate(new PageRasp(usrgr));
 
         }
@@ -50,6 +51,27 @@ namespace elj.windows
         {
             int idUs = appdata.DBapp.autst.Users.idUser;
             mainFrame.Navigate(new Account(idUs));
+    
+        }
+
+        private void CalendarWind()
+        {
+            DateTime date = DateTime.Today;
+            numdayTB.Text = date.Day.ToString();
+            monTB.Text = date.ToString("MMMM");  
+        }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnZRasp_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
+
+
+    
 }

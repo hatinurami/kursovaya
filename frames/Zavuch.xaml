@@ -1,0 +1,75 @@
+﻿<Page x:Class="elj.frames.Zavuch"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:elj.frames"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Zavuch">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            Grid.Column="1">
+            <GroupBox Header="Поиск записей"
+                      FontSize="26">
+                <TextBox Text="fhgjdfhH"
+                         FontSize="20"/>
+            </GroupBox>
+            <DataGrid
+            Height="380"
+            VerticalAlignment="Bottom"
+            x:Name="infoGrid"
+            AutoGenerateColumns="False"
+            CanUserReorderColumns="False"
+            CanUserResizeColumns="False"
+            CanUserSortColumns="False"
+            >
+
+            </DataGrid>
+
+        </StackPanel>
+        <StackPanel>
+            <GroupBox Header="Студенты"
+                  FontSize="20"
+                  >
+                <StackPanel>
+                    <GroupBox Header="Группа">
+
+                    </GroupBox>
+                    <GroupBox Header="Статус">
+
+                    </GroupBox>
+                    <GroupBox Header="Курс">
+
+                    </GroupBox>
+                </StackPanel>
+
+
+            </GroupBox>
+
+            <GroupBox Header="Студенты"
+                  FontSize="20"
+                  >
+                <StackPanel>
+                    <GroupBox Header="Группа">
+
+                    </GroupBox>
+                    <GroupBox Header="Статус">
+
+                    </GroupBox>
+                    <GroupBox Header="Курс">
+
+                    </GroupBox>
+                </StackPanel>
+
+
+            </GroupBox>
+        </StackPanel>
+
+    </Grid>
+</Page>

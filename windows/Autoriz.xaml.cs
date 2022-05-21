@@ -36,25 +36,42 @@ namespace elj.windows
                 if (log != null)
                 {
                     var stdAut = context.Student.ToList().
-                        Where(j => log.idUser == j.idUser);
+                        Where(j => log.idUser == j.idUser).FirstOrDefault();
+                    //var stdAut = context.
 
                     var prepAut = context.Teacher.ToList().
-                        Where(j => log.idUser == j.idUser);
+                        Where(j => log.idUser == j.idUser).FirstOrDefault();
 
                     if (stdAut != null)
                     {
-                        autst = stdAut.FirstOrDefault();
+                        autst = stdAut;
                         int stGr = Convert.ToInt32(autst.studGroup);
                         MainWindow main = new MainWindow(stGr);
+                        Close();
                         main.ShowDialog();
                     }
                     else if (prepAut != null)
                     {
-                        auttch = prepAut.FirstOrDefault();
-                        int idTS = Convert.ToInt32(context.TeachSubject.
-                            Where(i=> i.idTeach == auttch.idTeach));
-                        MainWindow main = new MainWindow(idTS);
-                        main.ShowDialog();
+                        auttch = prepAut;
+                        if (auttch.Position.idPos == 1)
+                        {
+                            int idTS = context.Teacher.
+                            Where(i => i.idTeach == auttch.idTeach).Select(c => c.idTeach).FirstOrDefault();
+                            
+                            MainWindow main = new MainWindow(idTS);
+                            Close();
+                            main.ShowDialog();
+                        }
+                        else 
+                        {
+                            int idTS = Convert.ToInt32(context.TeachSubject.
+                            Where(i=> i.idTeach == auttch.idTeach).Select(c => c.idTeach));
+                            Close();
+                            MainWindow main = new MainWindow(idTS);
+                            main.ShowDialog();
+                        }
+
+                        
                     }
                 }
                 else

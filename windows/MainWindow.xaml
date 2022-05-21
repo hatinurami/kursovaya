@@ -27,7 +27,8 @@
                 HorizontalAlignment="Left"
                 Margin="16,20,0,20">
             <Grid>
-                <WrapPanel
+                <WrapPanel x:Name="StudentButton"
+                           Visibility="Collapsed"
                     Margin="10 0"
                     VerticalAlignment="Center">
                     <Button x:Name="btnRasp"                    
@@ -44,6 +45,25 @@
                             Style="{DynamicResource btnSt}"
                             Click="btnKab_Click"/>
 
+                </WrapPanel>
+
+                <WrapPanel x:Name="PrepButton"
+                           Visibility="Visible"
+                    Margin="10 0"
+                    VerticalAlignment="Center">
+                    <Button x:Name="btnInfo"                    
+                            Content="Информация"
+                            Style="{DynamicResource btnSt}"
+                            Click="btnInfo_Click"/>
+                    <Button x:Name="btnZRasp"                    
+                            Content="Расписание"
+                            Style="{DynamicResource btnSt}"
+                            Click="btnZRasp_Click"/>
+                    <Button x:Name="btnZKab"                   
+                            Content="Личный кабинет"
+                            Width="235"
+                            Style="{DynamicResource btnSt}"
+                            Click="btnKab_Click"/>
                 </WrapPanel>
                 <Button x:Name="exitBttn"                     
                     Content="Выход"
