@@ -57,8 +57,7 @@ namespace elj.windows
                         {
                             int idTS = context.Teacher.
                             Where(i => i.idTeach == auttch.idTeach).Select(c => c.idTeach).FirstOrDefault();
-                            
-                            MainWindow main = new MainWindow(idTS);
+                            ZavWin main = new ZavWin(idTS);
                             Close();
                             main.ShowDialog();
                         }
@@ -69,9 +68,7 @@ namespace elj.windows
                             Close();
                             MainWindow main = new MainWindow(idTS);
                             main.ShowDialog();
-                        }
-
-                        
+                        }           
                     }
                 }
                 else

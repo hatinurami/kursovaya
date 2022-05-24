@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3fb335fe2fc74506a2af2501574978a9" Name="Diagram1">
+      <Diagram DiagramId="3fb335fe2fc74506a2af2501574978a9" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="elJournalModel.Gender" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="elJournalModel.Position" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="elJournalModel.Shedule" Width="1.5" PointX="12.75" PointY="4.625" IsExpanded="true" />

@@ -5,8 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:elj.frames"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Zavuch">
+      d:DesignHeight="582" d:DesignWidth="867"
+      Title="Zavuch"
+     >
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,53 +18,155 @@
             Grid.Column="1">
             <GroupBox Header="Поиск записей"
                       FontSize="26">
-                <TextBox Text="fhgjdfhH"
+                <TextBox 
                          FontSize="20"/>
             </GroupBox>
+            <StackPanel>
             <DataGrid
-            Height="380"
+            Height="480"
             VerticalAlignment="Bottom"
-            x:Name="infoGrid"
+            x:Name="infoGridStudents"
             AutoGenerateColumns="False"
             CanUserReorderColumns="False"
             CanUserResizeColumns="False"
-            CanUserSortColumns="False"
+            CanUserSortColumns="True"
             >
-
+                    <DataGrid.Columns>
+                    <DataGridTextColumn Header="Фамилия"
+                                        Binding="{Binding Users.lName}"/>
+                    <DataGridTextColumn Header="Имя"
+                                        Binding="{Binding Users.fName}"
+                                        />
+                    <DataGridTextColumn Header="Отчество"
+                                        Binding="{Binding Users.patronim}"/>
+                    <DataGridTextColumn Header="Группа"
+                                        
+                                        Binding="{Binding StudGroup1.groupName}"/>
+                        <DataGridTextColumn Header="Курс"
+                                        Binding="{Binding StudGroup1.course}"
+                                       />
+                        <DataGridTextColumn Header="Статус"
+                                        Binding="{Binding status}"/>
+                   
+                </DataGrid.Columns>
             </DataGrid>
 
+                <DataGrid
+            Height="480"
+            VerticalAlignment="Bottom"
+            x:Name="infoGridPrepod"
+            AutoGenerateColumns="False"
+            CanUserReorderColumns="False"
+            CanUserResizeColumns="False"
+            CanUserSortColumns="True"
+            >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Фамилия"
+                                        Binding="{Binding Users.lName}"/>
+                        <DataGridTextColumn Header="Имя"
+                                        Binding="{Binding Users.fName}"
+                                        />
+                        <DataGridTextColumn Header="Отчество"
+                                        Binding="{Binding Users.patronim}"/>
+                       
+                        <DataGridTextColumn Header="Должность"
+                                        Binding="{Binding Position.position1}"/>
+                        <DataGridTextColumn Header="Стаж"
+                                        Binding="{Binding workExperience}"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+            <WrapPanel HorizontalAlignment="Right">
+                <Button x:Name="nLef"
+                        Content="&lt;"
+                        BorderThickness="0"
+                        Background="Transparent"
+                        Click="nLef_Click"
+                        FontSize="17"/>
+                <WrapPanel Name="Navigate"/>
+                <Button x:Name="nRig"
+                        Content=">"
+                         BorderThickness="0"
+                        Background="Transparent"
+                        Click="nRig_Click"
+                        FontSize="17"/>
+            </WrapPanel>
         </StackPanel>
         <StackPanel>
-            <GroupBox Header="Студенты"
-                  FontSize="20"
-                  >
+            <Viewbox Height="25"
+                     Margin="5 10 0 0"
+                     HorizontalAlignment="Left">
+                <RadioButton  
+                    x:Name="studVis"
+                    FontSize="13"
+                    GroupName="ListVis"
+                    Content="Студенты" 
+                    Click="studVis_Click" />
+            </Viewbox>
+            <Viewbox Height="25"
+                     Margin="5"
+                     HorizontalAlignment="Left">
+                <RadioButton 
+                     x:Name="prepVis"
+                     FontSize="13"
+                     GroupName="ListVis"
+                     Content="Преподаватели" 
+                     Click="prepVis_Click" />
+            </Viewbox>
+            <GroupBox 
+                x:Name="studentGB"
+                  Header="Студенты"
+                  FontSize="20">
                 <StackPanel>
-                    <GroupBox Header="Группа">
-
+                 
+                        <GroupBox Header="Группа">
+                        <ComboBox x:Name="cb_Group"
+                                  Margin="3"
+                                  DisplayMemberPath="groupName"
+                                  SelectedValuePath="idGroup"
+                                  SelectionChanged="cb_FILTER_SelectionChanged"
+                                  
+                                  />
                     </GroupBox>
                     <GroupBox Header="Статус">
-
+                        <ComboBox x:Name="cb_Status"
+                                  SelectionChanged="cb_FILTER_SelectionChanged"
+                                  Margin="3"/>
                     </GroupBox>
                     <GroupBox Header="Курс">
-
+                        <ComboBox x:Name="cb_Kurs"
+                                  SelectionChanged="cb_FILTER_SelectionChanged"
+                                  Margin="3"/>
                     </GroupBox>
                 </StackPanel>
 
 
             </GroupBox>
 
-            <GroupBox Header="Студенты"
-                  FontSize="20"
-                  >
+            <GroupBox 
+                x:Name="prepGB"
+                Header="Сотрудники"
+                  FontSize="20">
                 <StackPanel>
-                    <GroupBox Header="Группа">
-
+                    <GroupBox Header="Должность">
+                        <ComboBox x:Name="cb_Position"
+                                  DisplayMemberPath="position1"
+                                  SelectedValuePath="idPos"
+                                  Margin="3"/>
                     </GroupBox>
-                    <GroupBox Header="Статус">
-
+                    <GroupBox Header="Стаж">
+                        <TextBox x:Name="cb_WorkExp"
+                                 FontSize="16"
+                                  Margin="3"/>
                     </GroupBox>
-                    <GroupBox Header="Курс">
-
+                    <GroupBox Header="Дисциплина">
+                        <ComboBox x:Name="cb_Subj"
+                                  DisplayMemberPath="subjectname"
+                                  SelectedValuePath="idSubj"
+                                  
+                                  Margin="3"/>
                     </GroupBox>
                 </StackPanel>
 

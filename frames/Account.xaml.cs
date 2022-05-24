@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using elj.appdata;
+using static elj.appdata.DBapp;
+
 
 namespace elj.frames
 {
@@ -32,18 +33,50 @@ namespace elj.frames
         }
         private void Update()
         {
-            var userdata = DBapp.context.Users.Where(i => i.idUser == Usrr).ToList();
-            var usergroupid = DBapp.context.Student.Where(i => i.idUser == Usrr).Select(c => c.studGroup).FirstOrDefault();
-            string usergroup = DBapp.context.StudGroup.Where(i => i.idGroup == usergroupid).Select(c => c.groupName).FirstOrDefault().ToString();
+            if (auttch != null )
+            {
+                var userdataprep = context.Users.Where(i => i.idUser == Usrr).ToList();
+                var position = context.Teacher.Where(i => i.idUser == Usrr).Select(c => c.Position).FirstOrDefault();
+                
+                string _nameprep = userdataprep.Select(c => c.fName).FirstOrDefault().ToString();
+                string _patrprep = userdataprep.Select(c => c.patronim).FirstOrDefault().ToString();
+                string _fnameprep = userdataprep.Select(c => c.lName).FirstOrDefault().ToString();
+                string _posit =
+
+                logBlk.Text = userdataprep.Select(c => c.login).FirstOrDefault();
+                fioTxt.Text = $"{_nameprep} {_patrprep} {_fnameprep} | {position}";
+                dobSt.Text = $"Дата рождения {userdataprep.Select(c => c.dateOfBirth.ToShortDateString()).FirstOrDefault()}";
+
+            }
+            else if (autst != null)
+            {
+                var userdata = context.Users.Where(i => i.idUser == Usrr).ToList();
+                var usergroupid = context.Student.Where(i => i.idUser == Usrr).Select(c => c.studGroup).FirstOrDefault();
+                string usergroup = context.StudGroup.Where(i => i.idGroup == usergroupid).Select(c => c.groupName).FirstOrDefault().ToString();
 
 
-            string _name = userdata.Select(c => c.fName).FirstOrDefault().ToString();
-            string _patr = userdata.Select(c => c.patronim).FirstOrDefault().ToString();
-            string _fname = userdata.Select(c => c.lName).FirstOrDefault().ToString();
+                string _name = userdata.Select(c => c.fName).FirstOrDefault().ToString();
+                string _patr = userdata.Select(c => c.patronim).FirstOrDefault().ToString();
+                string _fname = userdata.Select(c => c.lName).FirstOrDefault().ToString();
 
-            logBlk.Text = userdata.Select(c => c.login).FirstOrDefault();
-            fioTxt.Text = $"{_name} {_patr} {_fname} | студент группы {usergroup}";
-            dobSt.Text = $"Дата рождения {userdata.Select(c => c.dateOfBirth.ToShortDateString()).FirstOrDefault()}";
+                logBlk.Text = userdata.Select(c => c.login).FirstOrDefault();
+                fioTxt.Text = $"{_name} {_patr} {_fname} | студент группы {usergroup}";
+                dobSt.Text = $"Дата рождения {userdata.Select(c => c.dateOfBirth.ToShortDateString()).FirstOrDefault()}";
+            }
+
+
+            //var userdata = context.Users.Where(i => i.idUser == Usrr).ToList();
+            //var usergroupid = context.Student.Where(i => i.idUser == Usrr).Select(c => c.studGroup).FirstOrDefault();
+            //string usergroup = context.StudGroup.Where(i => i.idGroup == usergroupid).Select(c => c.groupName).FirstOrDefault().ToString();
+
+
+            //string _name = userdata.Select(c => c.fName).FirstOrDefault().ToString();
+            //string _patr = userdata.Select(c => c.patronim).FirstOrDefault().ToString();
+            //string _fname = userdata.Select(c => c.lName).FirstOrDefault().ToString();
+
+            //logBlk.Text = userdata.Select(c => c.login).FirstOrDefault();
+            //fioTxt.Text = $"{_name} {_patr} {_fname} | студент группы {usergroup}";
+            //dobSt.Text = $"Дата рождения {userdata.Select(c => c.dateOfBirth.ToShortDateString()).FirstOrDefault()}";
         }
 
         
@@ -55,11 +88,11 @@ namespace elj.frames
         private void save_btn_Click(object sender, RoutedEventArgs e)
         {
             
-            var userdata = DBapp.context.Users.Where(i => i.idUser == Usrr).FirstOrDefault();
+            var userdata = context.Users.Where(i => i.idUser == Usrr).FirstOrDefault();
             userdata.login = logEdit.Text;
             logBlk.Text = logEdit.Text;
             userdata.password = pasEdit.Text;
-            DBapp.context.SaveChanges();
+            context.SaveChanges();
             MessageBox.Show("Данные обновлены");
 
             logBlk.Visibility = Visibility.Visible;
@@ -80,7 +113,7 @@ namespace elj.frames
             logEdit.Visibility = Visibility.Visible;
             logEdit.Text = logBlk.Text;
 
-            var userdata = DBapp.context.Users.Where(i => i.idUser == Usrr).ToList();
+            var userdata = context.Users.Where(i => i.idUser == Usrr).ToList();
             pasBlk.Visibility = Visibility.Collapsed;
             pasEdit.Visibility = Visibility.Visible;
             pasEdit.Text = userdata.Select(c => c.password).FirstOrDefault();

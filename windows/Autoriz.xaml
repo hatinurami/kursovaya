@@ -27,8 +27,7 @@
                            TextAlignment="Left"
                            FontFamily="Courier New Bold"
                            Foreground="#A9C5D1"/>
-                <TextBox x:Name="logTxt"
-                         
+                    <TextBox x:Name="logTxt"                       
                          FontSize="30"
                          Foreground="#3D6271"
                      BorderThickness="7"
@@ -37,9 +36,7 @@
                      Width="527px"
                      TextChanged="tb_TextChanged"
                      Margin="0 0 0 20"/>
-
-
-                <TextBlock Text="Пароль"
+                    <TextBlock Text="Пароль"
                            FontSize="30"
                            TextAlignment="Left"
                            
@@ -60,19 +57,14 @@
                        HorizontalAlignment="Center"
                        Margin="10">
                     <Button x:Name="entBtn"
+                            IsDefault="True"
                             Content="Войти"
                             Click="entBtn_Click"
                             Style="{StaticResource btnSt}"
                             Foreground="#3D6271"/>
-                    <!--<Button x:Name="extBtn"
-                            Content="Выйти"
-                            Style="{StaticResource btnSt}"
-                            Foreground="#A9C5D1"
-                            Margin="150 0 0 0"/>-->
                 </WrapPanel>
                 
-                <Button x:Name="extBtn"
-                            
+                <Button x:Name="extBtn"              
                             Style="{StaticResource btnSt}"                           
                             Height="45"                      
                             Width="45"                       

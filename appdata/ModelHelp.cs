@@ -13,10 +13,22 @@ namespace elj.appdata
         {
             get
             {
-                string ts = $"{timeStart.Hours}:{timeStart.Minutes}";
-                return ts;
+                DateTime dt;
+                TimeSpan timeSpan = new TimeSpan(0, 00, 0);
+                timeSpan = timeStart;
+                dt = Convert.ToDateTime(timeSpan.ToString());
+                string ts = dt.Minute.ToString("00");
+                string st = dt.Hour.ToString();
+                string tst = $"{st}:{ts}";
+                return tst;
             }
         }
+
+       
+        
+            
+            
+            
 
     }
 }

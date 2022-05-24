@@ -1,4 +1,5 @@
-﻿using System;
+﻿using elj.frames;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,25 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using elj.frames;
 
 namespace elj.windows
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ZavWin.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ZavWin : Window
     {
-        int usrgr;
-        public MainWindow(int a)
+        public ZavWin(int a)
         {
-            usrgr = a;
             InitializeComponent();
+            mainFrame.Navigate(new Zavuch());
             CalendarWind();
-            mainFrame.Navigate(new PageRasp(usrgr));
-
         }
 
        
@@ -38,34 +34,25 @@ namespace elj.windows
             Close();
         }
 
-        private void btnRasp_Click(object sender, RoutedEventArgs e)
-        {
-            mainFrame.Navigate(new PageRasp(usrgr));
-        }
-
-        private void btnMark_Click(object sender, RoutedEventArgs e)
-        {
-            int idSt = appdata.DBapp.autst.idStud;
-            mainFrame.Navigate(new Marks(idSt));
-        }
+        
 
         private void btnKab_Click(object sender, RoutedEventArgs e)
         {
-            int idUs = appdata.DBapp.autst.Users.idUser;
+            int idUs = appdata.DBapp.auttch.Users.idUser;
             mainFrame.Navigate(new Account(idUs));
-    
+
         }
 
         private void CalendarWind()
         {
             DateTime date = DateTime.Today;
             numdayTB.Text = date.Day.ToString();
-            monTB.Text = date.ToString("MMMM");  
+            monTB.Text = date.ToString("MMMM");
         }
 
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            mainFrame.Navigate(new Zavuch());
         }
 
         private void btnZRasp_Click(object sender, RoutedEventArgs e)
@@ -73,7 +60,4 @@ namespace elj.windows
 
         }
     }
-
-
-    
 }

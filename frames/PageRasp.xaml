@@ -8,7 +8,6 @@
       d:DesignHeight="582" d:DesignWidth="867"
       Title="PageRasp">
     <Grid>
-
         <ScrollViewer>
             <StackPanel>
                 <Border Margin="30"
@@ -74,12 +73,6 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-
-
-
-
-
-
                     </Grid>
                 </Border>
                 <Border Margin="30"

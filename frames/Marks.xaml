@@ -10,7 +10,8 @@
 
     <Grid>
         <DataGrid x:Name="MarkGrid"
-                  AutoGenerateColumns="False">
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Предмет"
                                      Binding="{Binding Дисциплина}">

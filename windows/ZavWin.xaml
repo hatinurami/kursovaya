@@ -1,9 +1,9 @@
-﻿<Window x:Class="elj.windows.MainWindow"
+﻿<Window x:Class="elj.windows.ZavWin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:elj"
+        xmlns:local="clr-namespace:elj.windows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Style="{DynamicResource winSt}"
@@ -27,25 +27,24 @@
                 HorizontalAlignment="Left"
                 Margin="16,20,0,20">
             <Grid>
-                <WrapPanel x:Name="StudentButton"
-                           Margin="10 0"
-                           VerticalAlignment="Center">
-                    <Button x:Name="btnRasp"                    
+                <WrapPanel x:Name="PrepButton"
+                           Visibility="Visible"
+                    Margin="10 0"
+                    VerticalAlignment="Center">
+                    <Button x:Name="btnInfo"                    
+                            Content="Информация"
+                            Style="{DynamicResource btnSt}"
+                            Click="btnInfo_Click"/>
+                    <Button x:Name="btnZRasp"                    
                             Content="Расписание"
                             Style="{DynamicResource btnSt}"
-                            Click="btnRasp_Click"/>
-                    <Button x:Name="btnMark"                    
-                            Content="Оценки"
-                            Style="{DynamicResource btnSt}"
-                            Click="btnMark_Click"/>
-                    <Button x:Name="btnKab"                   
+                            Click="btnZRasp_Click"/>
+                    <Button x:Name="btnZKab"                   
                             Content="Личный кабинет"
                             Width="235"
                             Style="{DynamicResource btnSt}"
                             Click="btnKab_Click"/>
-
                 </WrapPanel>
-
                 <Button x:Name="exitBttn"                     
                     Content="Выход"
                         HorizontalAlignment="Right"
@@ -100,8 +99,8 @@
                NavigationUIVisibility="Hidden"
                Background="#E4F1F6"
               HorizontalAlignment="Left" 
-               VerticalAlignment="Top">
+               VerticalAlignment="Top" >
+
         </Frame>
     </Grid>
-
 </Window>

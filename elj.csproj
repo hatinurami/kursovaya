@@ -150,6 +150,9 @@
     <Compile Include="windows\Autoriz.xaml.cs">
       <DependentUpon>Autoriz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\ZavWin.xaml.cs">
+      <DependentUpon>ZavWin.xaml</DependentUpon>
+    </Compile>
     <Page Include="frames\Account.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\Autoriz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\ZavWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
