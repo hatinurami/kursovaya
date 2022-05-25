@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static elj.appdata.DBapp;
 using elj.appdata;
+using elj.windows;
 
 namespace elj.frames
 {
@@ -71,90 +72,16 @@ namespace elj.frames
                         }
                     }
                 }
-                
-
-
-
-
-                //infoGridStudents.ItemsSource = context.Student.
-                //      Where(i => i.studGroup == filtr_gr && i.status == filtr_statis && i.StudGroup1.course == filtr_krs
-                //      || i.studGroup == filtr_gr && i.status == filtr_statis ||
-                //      i.status == filtr_statis && i.StudGroup1.course == filtr_krs|| i.studGroup == filtr_gr || i.StudGroup1.course == filtr_krs || i.status == filtr_statis
-                //      ).ToList();
 
             }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //if (cb_Group.SelectedItem != null)
-            //{
-
-            //  int filtr_gr = cb_Group.SelectedIndex +1;
-            //  infoGridStudents.ItemsSource = context.Student.Where(i => i.studGroup == filtr_gr).ToList();
-            //  if (cb_Status.SelectedItem != null)
-            //  {
-            //      string filtr_statis = cb_Status.SelectedValue.ToString();
-            //      infoGridStudents.ItemsSource = context.Student.
-            //          Where(i => i.studGroup == filtr_gr && i.status == filtr_statis).ToList();
-            //  }
-
-            //}
-            //if (cb_Kurs.SelectedItem != null)
-            //{
-
-            //  int filtr_krs = cb_Kurs.SelectedIndex + 1;
-            //  infoGridStudents.ItemsSource = context.Student.Where(i => i.StudGroup1.course == filtr_krs).ToList();
-
-            //  if (cb_Status.SelectedItem != null)
-            //  {
-            //      string filtr_statis = cb_Status.SelectedValue.ToString();
-            //      infoGridStudents.ItemsSource = context.Student.
-            //          Where(i => i.studGroup == filtr_krs && i.status == filtr_statis).ToList();
-            //  }
-
-
-            //}
-            //if (cb_Status.SelectedItem != null)
-            //{
-            //    string filtr_statis = cb_Status.SelectedValue.ToString();
-            //    infoGridStudents.ItemsSource = context.Student.
-            //        Where(i => i.status == filtr_statis).ToList();
-            //    if (cb_Group.SelectedItem != null)
-            //    {
-            //        int filtr_gr = cb_Group.SelectedIndex + 1;
-            //        infoGridStudents.ItemsSource = context.Student.
-            //         Where(i => i.studGroup == filtr_gr && i.status == filtr_statis).ToList();
-            //    }
-            //    if (cb_Kurs.SelectedItem != null)
-            //    {
-            //        int filtr_krs = cb_Kurs.SelectedIndex + 1;
-            //        infoGridStudents.ItemsSource = context.Student.
-            //          Where(i => i.studGroup == filtr_krs && i.status == filtr_statis).ToList();
-            //    }
-
-
-            //}
-
-
-
-
-
-
-
+        }
+        private void addUser_Click(object sender, RoutedEventArgs e)
+        {
+            UserAdd add = new UserAdd();
+            add.ShowDialog();
         }
 
         private void Comboboxes()
@@ -218,5 +145,14 @@ namespace elj.frames
         {
             Filtr();
         }
+
+        private void addGroup_Click(object sender, RoutedEventArgs e)
+        {
+            
+                GroupAdd add = new GroupAdd();
+                add.ShowDialog();
+            
+        }
+
     }
 }

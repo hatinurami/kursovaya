@@ -1,0 +1,53 @@
+﻿<Window x:Class="elj.windows.Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:elj.windows"
+        mc:Ignorable="d"
+          WindowStartupLocation="CenterScreen"
+        Style="{DynamicResource winStad}" 
+        Title="Admin">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="114"/>
+            <ColumnDefinition  MinWidth="1318"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="108"/>
+            <RowDefinition Height="auto" MinHeight="644"/>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="topBrd"
+            Grid.Column ="0"
+                Grid.ColumnSpan="2"
+                Width="966.75px"
+                Background="#BD93BD"
+                HorizontalAlignment="Left"
+                Margin="16,20,0,20">
+            <Grid>
+
+
+                <Button x:Name="exitBttn"                     
+                    Content="Выход"
+                        HorizontalAlignment="Right"
+                        Margin="10 0"
+                        Style="{DynamicResource btnSt}"
+                    Click="extClick"/>
+            </Grid>
+
+        </Border>
+        <Frame Grid.Row="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               x:Name="mainFrame"
+              Height="582px"
+               Width="967px"             
+               NavigationUIVisibility="Hidden"
+               Background="#F2EDEB"
+              HorizontalAlignment="Left" 
+               VerticalAlignment="Top" Margin="16,0,0,0">
+        </Frame>
+    </Grid>
+
+</Window>

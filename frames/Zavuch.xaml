@@ -29,6 +29,7 @@
             AutoGenerateColumns="False"
             CanUserReorderColumns="False"
             CanUserResizeColumns="False"
+                FontSize="15"
             CanUserSortColumns="True"
             >
                     <DataGrid.Columns>
@@ -45,6 +46,10 @@
                         <DataGridTextColumn Header="Курс"
                                         Binding="{Binding StudGroup1.course}"
                                        />
+                        <DataGridTextColumn Header="Логин"
+                                            Binding="{Binding Users.login}"/>
+                        <DataGridTextColumn Header="Пароль"
+                                            Binding="{Binding Users.password}"/>
                         <DataGridTextColumn Header="Статус"
                                         Binding="{Binding status}"/>
                    
@@ -59,6 +64,7 @@
             CanUserReorderColumns="False"
             CanUserResizeColumns="False"
             CanUserSortColumns="True"
+                    FontSize="15"
             >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Фамилия"
@@ -68,9 +74,13 @@
                                         />
                         <DataGridTextColumn Header="Отчество"
                                         Binding="{Binding Users.patronim}"/>
-                       
+
                         <DataGridTextColumn Header="Должность"
                                         Binding="{Binding Position.position1}"/>
+                        <DataGridTextColumn Header="Логин"
+                                            Binding="{Binding Users.login}"/>
+                        <DataGridTextColumn Header="Пароль"
+                                            Binding="{Binding Users.password}"/>
                         <DataGridTextColumn Header="Стаж"
                                         Binding="{Binding workExperience}"/>
 
@@ -180,9 +190,27 @@
                                   Margin="3"/>
                     </GroupBox>
                 </StackPanel>
-
-
             </GroupBox>
+            <Button x:Name="addUser"
+                    Content="Добавить пользователя"
+                    Height="64"
+                    FontSize="15"
+                    HorizontalContentAlignment="Center"
+                    Click="addUser_Click"
+                    Foreground="Black"
+                    BorderBrush="Black"
+                    Style="{StaticResource btnSt}" 
+                    Width="217"/>
+            <Button x:Name="addGroup"
+                    Content="Добавить группу"
+                    Height="64"
+                    FontSize="15"
+                    HorizontalContentAlignment="Center"
+                    Click="addGroup_Click"
+                    Foreground="Black"
+                    BorderBrush="Black"
+                    Style="{StaticResource btnSt}" 
+                    Width="217"/>
         </StackPanel>
 
     </Grid>

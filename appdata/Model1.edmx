@@ -857,8 +857,9 @@
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="MarkStud_Result">
-          <Property Type="Int16" Name="Оценки" Nullable="false" />
+          <Property Type="Int16" Name="Оценки" Nullable="true" />
           <Property Type="String" Name="Дисциплина" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="date" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1055,6 +1056,7 @@
               <ComplexTypeMapping TypeName="elJournalModel.MarkStud_Result">
                 <ScalarProperty Name="Оценки" ColumnName="Оценки" />
                 <ScalarProperty Name="Дисциплина" ColumnName="Дисциплина" />
+                <ScalarProperty Name="date" ColumnName="date" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

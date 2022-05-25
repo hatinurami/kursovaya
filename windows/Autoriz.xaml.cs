@@ -37,7 +37,6 @@ namespace elj.windows
                 {
                     var stdAut = context.Student.ToList().
                         Where(j => log.idUser == j.idUser).FirstOrDefault();
-                    //var stdAut = context.
 
                     var prepAut = context.Teacher.ToList().
                         Where(j => log.idUser == j.idUser).FirstOrDefault();
@@ -61,6 +60,12 @@ namespace elj.windows
                             Close();
                             main.ShowDialog();
                         }
+                        else if (auttch.Position.idPos == 4)
+                        {
+                            Admin admin = new Admin();
+                            Close();
+                            admin.ShowDialog();
+                        }
                         else 
                         {
                             int idTS = Convert.ToInt32(context.TeachSubject.
@@ -74,9 +79,9 @@ namespace elj.windows
                 else
                 {
                     if (logTxt.Text == null || pasPbx == null)
-                        MessageBox.Show("заполните поля!");
+                        MessageBox.Show("Заполните поля!");
                    
-                    MessageBox.Show("ой");
+                    MessageBox.Show("Произошла ошибка авторизации. Проверьте введённые данные или обратитесь к администратору", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
             catch (Exception ee)

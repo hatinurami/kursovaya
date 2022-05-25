@@ -13,7 +13,8 @@ namespace elj.appdata
     
     public partial class MarkStud_Result
     {
-        public short Оценки { get; set; }
+        public Nullable<short> Оценки { get; set; }
         public string Дисциплина { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     }
 }

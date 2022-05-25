@@ -9,17 +9,47 @@
       Title="Marks">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="271*"/>
+            <ColumnDefinition Width="596*"/>
+        </Grid.ColumnDefinitions>
         <DataGrid x:Name="MarkGrid"
+                  Grid.Column="1"
+                  Margin="10"
+                  FontSize="20"
                   AutoGenerateColumns="False"
                   IsReadOnly="True">
             <DataGrid.Columns >
-                <DataGridTextColumn Header="Предмет"
+                <DataGridTextColumn Header="Дисциплина"
                                      Binding="{Binding Дисциплина}">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Оценки"
                                      Binding="{Binding Оценки}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Дата"
+                                     Binding="{Binding date, StringFormat={}dd.MM}">
+
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel>
+            <GroupBox Header="Дата"
+                  Height="auto"
+                      FontSize="18">
+                <ComboBox Margin="5">
+                    <ComboBoxItem>Все</ComboBoxItem>
+                </ComboBox>
+        </GroupBox>
+        <GroupBox Header="Предмет"
+                  Height="auto"
+                  FontSize="18">
+                <ComboBox Margin="5">
+                    <ComboBoxItem>Все</ComboBoxItem>
+                </ComboBox>
+
+            </GroupBox>
+        </StackPanel>
+        
     </Grid>
 </Page>

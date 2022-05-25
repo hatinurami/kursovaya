@@ -15,6 +15,21 @@
         <Setter Property="Width"
                 Value="994.22px"/>
     </Style>
+
+    <Style TargetType="{x:Type Window}" x:Key="winStad">
+        <Setter Property="Background" 
+                Value="#703D6E"/>
+     
+       
+        <Setter Property="WindowStyle"
+                Value="None"/>
+        <Setter Property="ResizeMode"
+                Value="NoResize"/>
+        <Setter Property="Height"
+                Value="707px"/>
+        <Setter Property="Width"
+                Value="994.22px"/>
+    </Style>
     <Style TargetType="{x:Type Button}" x:Key="btnSt">
         <Setter Property="Height"
                 Value="65px"/>
@@ -62,7 +77,7 @@
     <Style x:Key="brdRasp"
            TargetType="Border">
         <Setter Property="Background"
-                 Value="#A1AEB4"/>
+                 Value="#A9C5D1"/>
         <Setter Property="Grid.ColumnSpan"
                 Value="3"/>
         <Setter Property="VerticalAlignment"
@@ -93,7 +108,7 @@
     <Style TargetType="Label"
            x:Key="lbSt">
         <Setter Property="Background"
-         Value="#A1AEB4"/>
+         Value="#A9C5D1"/>
         <Setter Property="FontFamily"
                 Value="ofont.ru_DobotoPro"/>
         <Setter Property="FontSize"

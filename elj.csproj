@@ -140,6 +140,12 @@
     <Compile Include="frames\Account.xaml.cs">
       <DependentUpon>Account.xaml</DependentUpon>
     </Compile>
+    <Compile Include="frames\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frames\CreateRasp.xaml.cs">
+      <DependentUpon>CreateRasp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frames\Marks.xaml.cs">
       <DependentUpon>Marks.xaml</DependentUpon>
     </Compile>
@@ -147,13 +153,30 @@
       <DependentUpon>Zavuch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="windows\Admin.xaml.cs">
+      <DependentUpon>Admin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\Autoriz.xaml.cs">
       <DependentUpon>Autoriz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\GroupAdd.xaml.cs">
+      <DependentUpon>GroupAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\UserAdd.xaml.cs">
+      <DependentUpon>UserAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\ZavWin.xaml.cs">
       <DependentUpon>ZavWin.xaml</DependentUpon>
     </Compile>
     <Page Include="frames\Account.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frames\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frames\CreateRasp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,6 +189,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="frames\Zavuch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Admin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\GroupAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\Autoriz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\UserAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -248,6 +283,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="pic\Group.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="pic\gg_close-r.png" />

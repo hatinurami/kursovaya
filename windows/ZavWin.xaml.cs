@@ -57,7 +57,7 @@ namespace elj.windows
 
         private void btnZRasp_Click(object sender, RoutedEventArgs e)
         {
-
+            mainFrame.Navigate(new CreateRasp());
         }
     }
 }

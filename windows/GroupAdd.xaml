@@ -1,0 +1,158 @@
+﻿<Window x:Class="elj.windows.GroupAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:elj.windows"
+        mc:Ignorable="d"
+        Style="{StaticResource winStad}"
+        FontFamily="Courier New Bold"
+        Foreground="White"
+        Title="UserAdd" Height="159" Width="330">
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <Label 
+                   FontSize="22"
+                    Foreground="White"
+                    HorizontalContentAlignment="Center"
+                       Width="300"
+                   Content="Добавить группу"/>
+                <Image Source="/pic/Group.png" 
+                       Height="30"
+                       
+                       />
+
+
+            </WrapPanel>
+           
+            <GroupBox Header="Группа"
+                      FontSize="14">
+                <Grid Height="100">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                      
+
+
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Название"
+                               Style="{StaticResource txbSt}"
+                               Grid.Row="0"
+                               FontFamily="Courier New Bold"/>
+                    <TextBox Grid.Column="1"
+                             Margin="5"/>
+                    <TextBlock Text="Специальность"
+                               Style="{StaticResource txbSt}"
+                               Grid.Row="1"
+                               FontSize="13"
+                               FontFamily="Courier New Bold"/>
+                    <ComboBox Grid.Column="1"
+                              Grid.Row="1"
+                              Margin="5">
+                        <ComboBoxItem>Экономика</ComboBoxItem>
+                    </ComboBox>
+                    <Button Style="{StaticResource btnSt}"
+                            Height="20"
+                            Grid.Row="7"
+                            FontSize="16"
+                            BorderBrush="White"
+                            Content="Сохранить"
+                            Grid.ColumnSpan="2"/>
+
+
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Преподаватель"
+                      Visibility="Collapsed">
+                <Grid Height="250">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+
+
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Имя"
+                               Style="{StaticResource txbSt}"
+                               Grid.Row="0"
+                               FontFamily="Courier New Bold"/>
+                    <TextBox Grid.Column="1" 
+                             Margin="5"
+                             Grid.Row="0"
+                             FontSize="12"/>
+                    <TextBlock Text="Фамилия"
+                               Grid.Row="1"
+                               Style="{StaticResource txbSt}"
+                               FontFamily="Courier New Bold"/>
+                    <TextBox Grid.Column="1" 
+                             Margin="5"
+                             Grid.Row="1"
+                             FontSize="12"/>
+                    <TextBlock Text="Отчество"
+                                Grid.Row="2"
+                               Style="{StaticResource txbSt}"
+                               FontFamily="Courier New Bold"/>
+                    <TextBox Grid.Column="1" 
+                             Margin="5"
+                             Grid.Row="2"
+                             FontSize="12"/>
+                    <TextBlock Text="Дата рождения"
+                               Style="{StaticResource txbSt}"
+                               Grid.Row="3"
+                               FontSize="14"
+                               FontFamily="Courier New Bold"/>
+                    <DatePicker Grid.Column="1" 
+                             Margin="5"
+                             Grid.Row="3"
+                             FontSize="12"/>
+                    <TextBlock Text="Должность"
+                                Grid.Row="4"
+                               Style="{StaticResource txbSt}"
+                               FontFamily="Courier New Bold"/>
+                    <ComboBox Grid.Column="1" 
+                             Margin="5"
+                             Grid.Row="4"
+                             FontSize="12"/>
+                    <TextBlock Text="Логин"
+                               Style="{StaticResource txbSt}"
+                               Grid.Row="5"
+                               FontFamily="Courier New Bold"/>
+                    <TextBox Grid.Column="1" 
+                             Margin="5"
+                             Grid.Row="5"
+                             FontSize="12"/>
+                    <TextBlock Text="Пароль"
+                               Style="{StaticResource txbSt}"
+                               Grid.Row="6"
+                               FontFamily="Courier New Bold"/>
+                    <TextBox Grid.Column="1" 
+                             Margin="5"
+                             Grid.Row="6"
+                             FontSize="12"/>
+                    <Button Style="{StaticResource btnSt}"
+                            Height="20"
+                            Grid.Row="7"
+                            FontSize="16"
+                            BorderBrush="White"
+                            Content="Сохранить"
+                            Grid.ColumnSpan="2"/>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>
