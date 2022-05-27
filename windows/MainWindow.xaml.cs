@@ -30,39 +30,31 @@ namespace elj.windows
             mainFrame.Navigate(new PageRasp(usrgr));
 
         }
-
-       
-
         private void extClick(object sender, RoutedEventArgs e)
         {
             Close();
         }
-
         private void btnRasp_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Navigate(new PageRasp(usrgr));
         }
-
         private void btnMark_Click(object sender, RoutedEventArgs e)
         {
             int idSt = appdata.DBapp.autst.idStud;
             mainFrame.Navigate(new Marks(idSt));
         }
-
         private void btnKab_Click(object sender, RoutedEventArgs e)
         {
             int idUs = appdata.DBapp.autst.Users.idUser;
             mainFrame.Navigate(new Account(idUs));
     
         }
-
         private void CalendarWind()
         {
             DateTime date = DateTime.Today;
             numdayTB.Text = date.Day.ToString();
             monTB.Text = date.ToString("MMMM");  
         }
-
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
 

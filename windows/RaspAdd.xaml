@@ -1,0 +1,153 @@
+﻿<Window x:Class="elj.windows.RaspAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:elj.windows"
+        mc:Ignorable="d"
+        Foreground="White"
+        WindowStartupLocation="CenterOwner"
+        Style="{StaticResource winSt}"
+        Title="RaspAdd" Height="300" Width="525">
+    <Grid>
+        <Image Source="/pic/Group.png"
+               Height="30"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Right"/>
+        <GroupBox Header="Расписание"
+                  Height="275"
+                  VerticalAlignment="Bottom">
+            <StackPanel>
+                <TextBlock Text="День недели"
+                           FontSize="15"/>
+                <ComboBox
+                    FontSize="15">
+                    <ComboBoxItem>
+                        Понедельник
+                    </ComboBoxItem>
+                </ComboBox>
+                <WrapPanel >
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <TextBlock Text="Номер пары"
+                                   Width="47"
+                                   TextWrapping="Wrap"
+                               FontSize="15"
+                                   Margin="10 4"/>
+                    </Border>
+
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <TextBlock Text="Предмет"
+                               FontSize="15"
+                                   Width="150"
+                                   Margin="10 4"/>
+                    </Border>
+                    <Border BorderThickness="1"          
+                            BorderBrush="Black">
+                        <TextBlock Text="Преподаватель"
+                                   FontSize="15"
+                                   Width="150"
+                                   Margin="10 4"/>
+                    </Border>
+                </WrapPanel>
+                <WrapPanel >
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <ComboBox Width="67" SelectionChanged="ComboBox_SelectionChanged">
+                            <ComboBoxItem>
+                                1
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+
+                    <Border BorderThickness="1" 
+                            BorderBrush="Black">
+                        <ComboBox Width="170">
+                            <ComboBoxItem>
+                                русский язык
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                    <Border BorderThickness="1"          
+                            BorderBrush="Black">
+                        <ComboBox Width="170">
+                            <ComboBoxItem>
+                                Дерновая В.А.
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                </WrapPanel>
+                <WrapPanel >
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <ComboBox Width="67">
+                            <ComboBoxItem>
+                                2
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+
+                    <Border BorderThickness="1" 
+                            BorderBrush="Black">
+                        <ComboBox Width="170">
+                            <ComboBoxItem>
+                                математика
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                    <Border BorderThickness="1"          
+                            BorderBrush="Black">
+                        <ComboBox Width="170">
+                            <ComboBoxItem>
+                                Дерновая В.А.
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                </WrapPanel>
+                <WrapPanel >
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <ComboBox Width="67">
+                            <ComboBoxItem>
+                                3
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+
+                    <Border BorderThickness="1" 
+                            BorderBrush="Black">
+                        <ComboBox Width="170">
+                            <ComboBoxItem>
+                                экономика
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                    <Border BorderThickness="1"          
+                            BorderBrush="Black">
+                        <ComboBox Width="170">
+                            <ComboBoxItem>
+                                Дерновая В.А.
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                </WrapPanel>
+                <Button Content="Добавить пару"
+                        Style="{StaticResource btnSt}"
+                        FontSize="20"
+                        Height="30"/>
+                <Button Content="Сохранить"
+                        Style="{StaticResource btnSt}"
+                        FontSize="20"
+                        Height="30"/>
+                <!--<DataGrid>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер пары"
+                                            x:Name="numtime"/>
+                        <DataGridTextColumn Header="Предмет"
+                                            x:Name="subjcol"/>
+                        <DataGridTextColumn Header="Преподаватель"
+                                            x:Name="tesch"/>
+                    </DataGrid.Columns>
+                </DataGrid>-->
+            </StackPanel>
+            
+        </GroupBox>
+
+    </Grid>
+</Window>

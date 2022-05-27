@@ -135,8 +135,8 @@
                         <ComboBox x:Name="cb_Group"
                                   Margin="3"
                                   DisplayMemberPath="groupName"
-                                  SelectedValuePath="idGroup"
-                                  SelectionChanged="cb_FILTER_SelectionChanged"
+                                  SelectedValuePath="groupName"
+                                  SelectionChanged="cb_Group_SelectionChanged"
                                   IsEditable="True"
                                   >
                             <!--<TextBlock>Все</TextBlock>-->
@@ -144,7 +144,7 @@
                     </GroupBox>
                     <GroupBox Header="Статус">
                         <ComboBox x:Name="cb_Status"
-                                  SelectionChanged="cb_FILTER_SelectionChanged"
+                                  SelectionChanged="cb_Status_SelectionChanged"
                                    IsEditable="True"
                                   Margin="3">
                             <!--<TextBlock>Все</TextBlock>-->
@@ -152,7 +152,7 @@
                     </GroupBox>
                     <GroupBox Header="Курс">
                         <ComboBox x:Name="cb_Kurs"
-                                  SelectionChanged="cb_FILTER_SelectionChanged"
+                                  SelectionChanged="cb_Kurs_SelectionChanged"
                                    IsEditable="True"
                                   Margin="3">
                             <!--<TextBlock>Все</TextBlock>-->
@@ -172,21 +172,22 @@
                         <ComboBox x:Name="cb_Position"
                                   DisplayMemberPath="position1"
                                    IsEditable="True"
+                                  SelectionChanged="cb_Position_SelectionChanged"
                                   SelectedValuePath="idPos"
                                   Margin="3"/>
                     </GroupBox>
-                    <GroupBox Header="Стаж">
+                    <!--<GroupBox Header="Стаж">
                         <TextBox x:Name="cb_WorkExp"
                                   
                                  FontSize="16"
                                   Margin="3"/>
-                    </GroupBox>
+                    </GroupBox>-->
                     <GroupBox Header="Дисциплина">
                         <ComboBox x:Name="cb_Subj"
                                   DisplayMemberPath="subjectname"
                                    IsEditable="True"
                                   SelectedValuePath="idSubj"
-                                  
+                                  SelectionChanged="cb_Subj_SelectionChanged"
                                   Margin="3"/>
                     </GroupBox>
                 </StackPanel>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static elj.appdata.DBapp;
+using elj.windows;
 
 namespace elj.frames
 {
@@ -46,9 +47,13 @@ namespace elj.frames
         private void Update()
         {
             raspGrid.ItemsSource = context.Shedule.ToList();
-            dayweek.ItemsSource = context.WeekDay.Select(c => c.nameDay).ToList();
+           // dayweek.ItemsSource = context.WeekDay.Select(c => c.nameDay).ToList();
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RaspAdd raspAdd = new RaspAdd();
+            raspAdd.ShowDialog();
+        }
     }
 }

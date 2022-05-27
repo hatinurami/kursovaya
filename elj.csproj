@@ -149,6 +149,9 @@
     <Compile Include="frames\Marks.xaml.cs">
       <DependentUpon>Marks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="frames\TeachPage.xaml.cs">
+      <DependentUpon>TeachPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frames\Zavuch.xaml.cs">
       <DependentUpon>Zavuch.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,12 @@
     </Compile>
     <Compile Include="windows\GroupAdd.xaml.cs">
       <DependentUpon>GroupAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\RaspAdd.xaml.cs">
+      <DependentUpon>RaspAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\Teacher.xaml.cs">
+      <DependentUpon>Teacher.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\UserAdd.xaml.cs">
       <DependentUpon>UserAdd.xaml</DependentUpon>
@@ -185,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="frames\PageRasp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frames\TeachPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,6 +234,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\Autoriz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\RaspAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\Teacher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

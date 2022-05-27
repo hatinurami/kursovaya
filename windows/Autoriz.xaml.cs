@@ -68,10 +68,11 @@ namespace elj.windows
                         }
                         else 
                         {
-                            int idTS = Convert.ToInt32(context.TeachSubject.
-                            Where(i=> i.idTeach == auttch.idTeach).Select(c => c.idTeach));
+                            int idTS =context.TeachSubject.
+                            Where(i=> i.idTeach == auttch.idTeach ).Select(c => c.idTeach).FirstOrDefault();
+                            
+                            Teacher main = new Teacher(idTS);
                             Close();
-                            MainWindow main = new MainWindow(idTS);
                             main.ShowDialog();
                         }           
                     }
@@ -81,7 +82,8 @@ namespace elj.windows
                     if (logTxt.Text == null || pasPbx == null)
                         MessageBox.Show("Заполните поля!");
                    
-                    MessageBox.Show("Произошла ошибка авторизации. Проверьте введённые данные или обратитесь к администратору", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("Произошла ошибка авторизации. Проверьте введённые данные или обратитесь к администратору", 
+                        "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
             catch (Exception ee)

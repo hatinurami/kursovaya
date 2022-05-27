@@ -1,5 +1,4 @@
-﻿using elj.frames;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,30 +11,26 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using elj.frames;
 
 namespace elj.windows
 {
     /// <summary>
-    /// Логика взаимодействия для ZavWin.xaml
+    /// Логика взаимодействия для Teacher.xaml
     /// </summary>
-    public partial class ZavWin : Window
+    public partial class Teacher : Window
     {
-        public ZavWin(int a)
+        public Teacher(int a)
         {
             InitializeComponent();
-            mainFrame.Navigate(new Zavuch());
             CalendarWind();
         }
 
-       
-
-        private void extClick(object sender, RoutedEventArgs e)
+        private void journl_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            int idTh = appdata.DBapp.auttch.TeachSubject.Select(c => c.idTeach).FirstOrDefault();
+            mainFrame.Navigate(new TeachPage(idTh));
         }
-
-        
-
         private void btnKab_Click(object sender, RoutedEventArgs e)
         {
             int idUs = appdata.DBapp.auttch.Users.idUser;
@@ -49,12 +44,9 @@ namespace elj.windows
             numdayTB.Text = date.Day.ToString();
             monTB.Text = date.ToString("MMMM");
         }
-
-       
-
-        private void btnZRasp_Click(object sender, RoutedEventArgs e)
+        private void extClick(object sender, RoutedEventArgs e)
         {
-            mainFrame.Navigate(new CreateRasp());
+            Close();
         }
     }
 }

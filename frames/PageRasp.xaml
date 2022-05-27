@@ -42,16 +42,13 @@
                                   Grid.ColumnSpan="3"
                                   Height="auto"
                              >
-
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Border Grid.Row="1"
                                                 Grid.ColumnSpan="3"
                                                 Style="{StaticResource brdRasp}">
                                         <WrapPanel VerticalAlignment="Center">
-                                            <TextBlock Style="{StaticResource txbSt}" 
-                                                       
-                                                   
+                                            <TextBlock Style="{StaticResource txbSt}"                                                        
                                                    Text="{Binding num}"
                                                    Width="49">
                                             </TextBlock>
@@ -109,38 +106,36 @@
                                   Height="auto">
 
                             <ListView.ItemTemplate>
-                               
-                                    <DataTemplate>
-                                        <Border Grid.Row="1"
+
+                                <DataTemplate>
+                                    <Border Grid.Row="1"
                                                 Grid.ColumnSpan="3"
                                                 Style="{StaticResource brdRasp}">
-                                            <WrapPanel VerticalAlignment="Center">
-                                                <TextBlock Style="{StaticResource txbSt}" 
-                                                       
-                                                   
+                                        <WrapPanel VerticalAlignment="Center">
+                                            <TextBlock Style="{StaticResource txbSt}"                        
                                                    Text="{Binding num}"
                                                    Width="49">
-                                                </TextBlock>
+                                            </TextBlock>
 
-                                                <TextBlock Style="{StaticResource txbSt}"
+                                            <TextBlock Style="{StaticResource txbSt}"
                                                    Text="{Binding subjectname}"
                                                    Width="305"/>
-                                                <TextBlock Style="{StaticResource txbSt}"
+                                            <TextBlock Style="{StaticResource txbSt}"
                                                    Text="{Binding teachName}"
                                                    Width="300"/>
-                                                <TextBlock Style="{StaticResource txbSt}"
+                                            <TextBlock Style="{StaticResource txbSt}"
                                                    Text="{Binding timeStarrt}"
                                                    
                                                    Width="50"/>
-                                            </WrapPanel>
+                                        </WrapPanel>
 
-                                        </Border>
+                                    </Border>
 
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
 
-                        
+
                     </Grid>
                 </Border>
                 <Border Margin="30"
@@ -175,38 +170,38 @@
                               HorizontalAlignment="Center">
 
                             <ListView.ItemTemplate>
-                               
-                                    <DataTemplate>
-                                        <Border Grid.Row="1"
+
+                                <DataTemplate>
+                                    <Border Grid.Row="1"
                                                 Grid.ColumnSpan="3"
                                                 Style="{StaticResource brdRasp}">
-                                            <WrapPanel VerticalAlignment="Center">
-                                                <TextBlock Style="{StaticResource txbSt}" 
+                                        <WrapPanel VerticalAlignment="Center">
+                                            <TextBlock Style="{StaticResource txbSt}" 
                                                        
                                                    
                                                    Text="{Binding num}"
                                                    Width="49">
-                                                </TextBlock>
+                                            </TextBlock>
 
-                                                <TextBlock Style="{StaticResource txbSt}"
+                                            <TextBlock Style="{StaticResource txbSt}"
                                                    Text="{Binding subjectname}"
                                                    Width="305"/>
-                                                <TextBlock Style="{StaticResource txbSt}"
+                                            <TextBlock Style="{StaticResource txbSt}"
                                                    Text="{Binding teachName}"
                                                    Width="300"/>
-                                                <TextBlock Style="{StaticResource txbSt}"
+                                            <TextBlock Style="{StaticResource txbSt}"
                                                    Text="{Binding timeStarrt}"
                                                    
                                                    Width="50"/>
-                                            </WrapPanel>
+                                        </WrapPanel>
 
-                                        </Border>
+                                    </Border>
 
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
 
-                       
+
                     </Grid>
                 </Border>
                 <Border Margin="30"
@@ -271,7 +266,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
-                       
+
                     </Grid>
                 </Border>
                 <Border Margin="30"
@@ -335,8 +330,6 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-
-                        
                     </Grid>
                 </Border>
                 <Border Margin="30"
@@ -401,7 +394,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
-                        
+
                     </Grid>
                 </Border>
             </StackPanel>

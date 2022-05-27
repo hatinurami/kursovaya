@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:elj.frames"
       mc:Ignorable="d" 
+      FontFamily="Courier New Bold"
       d:DesignHeight="582" d:DesignWidth="867"
       Title="CreateRasp">
 
@@ -32,14 +33,26 @@
                 </StackPanel>
                
             </GroupBox>
+            <Button Content="Добавить расписание"
+                    Style="{StaticResource btnSt}"
+                    FontSize="16"
+                    Height="50"
+                    Width="200"
+                    Click="Button_Click"
+                    Margin="5"
+                    BorderBrush="Black"
+                    Foreground="Black"></Button>
         </StackPanel>
         <TextBlock
             Grid.Column="1"
-            Text="Расписание для какой-то группы"
+            
             FontSize="25"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            TextWrapping="Wrap"/>
+            Text="Расписание преподавателей"
+            TextWrapping="Wrap">
+            
+        </TextBlock>
         <DataGrid
             x:Name="raspGrid"
             Grid.Column="1"
@@ -47,19 +60,24 @@
             AutoGenerateColumns="False"
             CanUserReorderColumns="False">
             <DataGrid.Columns>
-                
-                <DataGridComboBoxColumn Header="День недели"
+
+                <DataGridTextColumn Header="День недели"
                                         x:Name="dayweek"
+                                        Binding ="{Binding WeekDay.nameDay}"
                                         Width="150"/>
                 <DataGridTextColumn Header="Номер пары"                                      
-                                        Width="100"/>
-                <DataGridComboBoxColumn Header="Дисциплина"
-                                        Width="100"/>
-                <DataGridComboBoxColumn Header="Преподаватель"
-                                        Width="100"/>
+                                        Width="100"
+                                    Binding="{Binding idTimeTable}"/>
+                <DataGridTextColumn Header="Дисциплина"
+                                        Width="100"
+                                    Binding="{Binding TeachSubject.Subject.subjectname}"/>
+                <DataGridTextColumn Header="Преподаватель"
+                                        Width="100"
+                                    Binding="{Binding TeachSubject.Teacher.Users.lName}"/>
             </DataGrid.Columns>
 
 
         </DataGrid>
+        
     </Grid>
 </Page>
