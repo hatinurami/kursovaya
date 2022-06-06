@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static elj.appdata.DBapp;
 
 namespace elj.windows
 {
@@ -22,6 +23,44 @@ namespace elj.windows
         public GroupAdd()
         {
             InitializeComponent();
+            spec_cb.ItemsSource = context.Speciality.ToList();
+        }
+
+        private void close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {            
+            var execgroup = context.StudGroup.Where(i => i.groupName == titlespec.Text)
+                .FirstOrDefault();
+            if (execgroup == null)
+            {
+                context.StudGroup.Add(new appdata.StudGroup
+                {
+                    groupName = titlespec.Text,
+                    specialty = spec_cb.SelectedIndex+1,
+                    course = 1
+                    
+                });
+                context.SaveChanges();
+                    MessageBox.Show("Группа создана.");
+                    titlespec.Text = string.Empty;
+                    spec_cb.SelectedIndex = -1;
+            }
+            else
+            {
+                MessageBox.Show("Такая группа уже сущетвует");
+            }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Ошибка сохранения.");
+            }
         }
     }
 }
