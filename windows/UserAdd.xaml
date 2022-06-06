@@ -5,34 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:elj.windows"
         mc:Ignorable="d"
-        FontFamily="Courier New Bold"
+        FontFamily="ofont.ru_DobotoPro.ttf"
         Foreground="White"
         Style="{StaticResource winStad}"
-        Title="UserAdd" Height="355" Width="330">
-    <Grid>
-        <StackPanel>
+        Title="UserAdd" 
+        Height="375" 
+        Width="340">
+    <Grid Margin="10">
+        <StackPanel >
             <WrapPanel>
                 <Label 
-                   FontSize="22"
+                   FontSize="20"
                     Foreground="White"
                     HorizontalContentAlignment="Center"
-                       Width="300"
+                       Width="286"
                    Content="Добавить пользователя"/>
-                <Image Source="/pic/Group.png" 
-                       Height="30"
-                       
-                       />
+                <Button x:Name="exit"
+                        BorderThickness="0"
+                        Click="exit_Click"
+                        Background="Transparent"
+                        HorizontalAlignment="Right">
+                    <Image Source="/pic/Group.png" 
+                       Height="30"/>
+                </Button>
 
 
             </WrapPanel>
             <GroupBox Header="Тип пользователя"
                       FontSize="15">
-                <ComboBox>
+                <ComboBox x:Name="type_cb"
+                          SelectionChanged="type_cb_SelectionChanged">
                     <ComboBoxItem>Студент</ComboBoxItem>
+                    <ComboBoxItem>Преподаватель</ComboBoxItem>
                 </ComboBox>
             </GroupBox>
             <GroupBox Header="Студент"
-                      FontSize="14">
+                      FontSize="14"
+                      >
                 <Grid Height="250">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="17*"/>
@@ -47,79 +56,132 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
-                        
+
 
                     </Grid.RowDefinitions>
                     <TextBlock Text="Имя"
                                Style="{StaticResource txbSt}"
                                Grid.Row="0"
-                               FontFamily="Courier New Bold"/>
+                               
+                               FontFamily="ofont.ru_DobotoPro.ttf"/>
                     <TextBox Grid.Column="1" 
                              Margin="5"
                              Grid.Row="0"
+                             x:Name="name_tb"
                              FontSize="12"/>
                     <TextBlock Text="Фамилия"
                                Grid.Row="1"
                                Style="{StaticResource txbSt}"
-                               FontFamily="Courier New Bold"/>
+                               FontFamily="ofont.ru_DobotoPro.ttf"/>
                     <TextBox Grid.Column="1" 
                              Margin="5"
+                             x:Name="lname_tb"
                              Grid.Row="1"
                              FontSize="12"/>
                     <TextBlock Text="Отчество"
                                 Grid.Row="2"
                                Style="{StaticResource txbSt}"
-                               FontFamily="Courier New Bold"/>
+                               FontFamily="ofont.ru_DobotoPro.ttf"/>
                     <TextBox Grid.Column="1" 
                              Margin="5"
+                             x:Name="patr_tb"
                              Grid.Row="2"
                              FontSize="12"/>
                     <TextBlock Text="Дата рождения"
                                Style="{StaticResource txbSt}"
                                Grid.Row="3"
                                FontSize="14"
-                               FontFamily="Courier New Bold"/>
-                    <DatePicker Grid.Column="1" 
+                              FontFamily="ofont.ru_DobotoPro.ttf"/>
+
+                    <WrapPanel Grid.Column="1" 
                              Margin="5"
-                             Grid.Row="3"
+                             Grid.Row="3">
+                        <DatePicker 
+                                Width="110"
+                                x:Name="dateofb_dp"
                              FontSize="12"/>
+
+                      
+                             <RadioButton Content="М"
+                                          Foreground="White"
+                                          GroupName="gen"
+                                          Margin="3"
+                                          x:Name="genM_rb"
+                                          />
+
+                            <RadioButton Content="Ж"
+                                      Foreground="White"
+                                         Margin="3"
+                                         x:Name="genW_gb"
+                                         GroupName="gen"/>
+
+                       
+                           
+                    </WrapPanel>
+
                     <TextBlock Text="Группа"
+                               x:Name="group_tb"
                                Style="{StaticResource txbSt}"
+                               Grid.Row="4"                              
+                               FontFamily="ofont.ru_DobotoPro.ttf"/>
+                    <ComboBox Grid.Column="1" 
+                             Margin="5"
+                             x:Name="group_cb"
+                             SelectedValuePath="idGroup"
+                             DisplayMemberPath="groupName"
+                             Grid.Row="4"
+                             FontSize="12"/>
+                    
+                    
+                    <TextBlock Text="Должность"
                                Grid.Row="4"
+                               x:Name="posit_tb"
+                               Visibility="Collapsed"
+                               Style="{StaticResource txbSt}"
                                FontFamily="Courier New Bold"/>
                     <ComboBox Grid.Column="1" 
                              Margin="5"
                              Grid.Row="4"
+                              Visibility="Collapsed"
+                              SelectedValuePath="idPos"
+                              DisplayMemberPath="position1"
+                             x:Name="position_cb"
                              FontSize="12"/>
+                    
+                    
                     <TextBlock Text="Логин"
                                Style="{StaticResource txbSt}"
                                Grid.Row="5"
-                               FontFamily="Courier New Bold"/>
+                              FontFamily="ofont.ru_DobotoPro.ttf"/>
                     <TextBox Grid.Column="1" 
                              Margin="5"
+                             x:Name="lod_tb"
                              Grid.Row="5"
                              FontSize="12"/>
                     <TextBlock Text="Пароль"
                                Style="{StaticResource txbSt}"
                                Grid.Row="6"
-                               FontFamily="Courier New Bold"/>
+                              FontFamily="ofont.ru_DobotoPro.ttf"/>
                     <TextBox Grid.Column="1" 
                              Margin="5"
                              Grid.Row="6"
+                             x:Name="pass_tb"
                              FontSize="12"/>
                     <Button Style="{StaticResource btnSt}"
                             Height="20"
                             Grid.Row="7"
                             FontSize="16"
+                            x:Name="save"
+                            Click="save_Click"
                             BorderBrush="White"
                             Content="Сохранить"
                             Grid.ColumnSpan="2"/>
-                    
+
 
                 </Grid>
             </GroupBox>
             <GroupBox Header="Преподаватель"
-                      Visibility="Collapsed">
+                      Visibility="Visible">
                 <Grid Height="250">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="17*"/>

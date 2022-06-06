@@ -7,6 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="582" d:DesignWidth="867"
       Title="Zavuch"
+      FontFamily="ofont_DobotoPro.ttf"
+      Foreground="#703D6E"
      >
 
     <Grid>
@@ -29,8 +31,10 @@
             AutoGenerateColumns="False"
             CanUserReorderColumns="False"
             CanUserResizeColumns="False"
-                FontSize="15"
-            CanUserSortColumns="True"
+            FontSize="15"
+            CanUserSortColumns="True" 
+            AlternatingRowBackground="#f4e0f3"
+            FontFamily="ofont_DobotoPro.ttf"
             >
                     <DataGrid.Columns>
                     <DataGridTextColumn Header="Фамилия"
@@ -64,6 +68,8 @@
             CanUserReorderColumns="False"
             CanUserResizeColumns="False"
             CanUserSortColumns="True"
+                    AlternatingRowBackground="#f4e0f3"
+            FontFamily="ofont_DobotoPro.ttf"
                     FontSize="15"
             >
                     <DataGrid.Columns>
@@ -109,6 +115,7 @@
                      Margin="5 10 0 0"
                      HorizontalAlignment="Left">
                 <RadioButton  
+                    Foreground="#703D6E"
                     x:Name="studVis"
                     FontSize="13"
                     GroupName="ListVis"
@@ -120,6 +127,7 @@
                      HorizontalAlignment="Left">
                 <RadioButton 
                      x:Name="prepVis"
+                    Foreground="#703D6E"
                      FontSize="13"
                      GroupName="ListVis"
                      Content="Преподаватели" 
@@ -198,8 +206,9 @@
                     FontSize="15"
                     HorizontalContentAlignment="Center"
                     Click="addUser_Click"
-                    Foreground="Black"
-                    BorderBrush="Black"
+                    Foreground="#703D6E"
+                    Margin="0 10"
+                    BorderBrush="#703D6E"
                     Style="{StaticResource btnSt}" 
                     Width="217"/>
             <Button x:Name="addGroup"
@@ -208,8 +217,9 @@
                     FontSize="15"
                     HorizontalContentAlignment="Center"
                     Click="addGroup_Click"
-                    Foreground="Black"
-                    BorderBrush="Black"
+                    Foreground="#703D6E"
+                    Margin="0 10"
+                    BorderBrush="#703D6E"
                     Style="{StaticResource btnSt}" 
                     Width="217"/>
         </StackPanel>
