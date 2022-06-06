@@ -147,7 +147,7 @@
                                   SelectionChanged="cb_Group_SelectionChanged"
                                   IsEditable="True"
                                   >
-                            <!--<TextBlock>Все</TextBlock>-->
+                            
                         </ComboBox>
                     </GroupBox>
                     <GroupBox Header="Статус">

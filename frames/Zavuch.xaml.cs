@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static elj.appdata.DBapp;
-using elj.appdata;
+using elj.classFunc;
 using elj.windows;
 
 namespace elj.frames
@@ -27,6 +27,9 @@ namespace elj.frames
         public Zavuch()
         {
             InitializeComponent();
+
+            cb_Status.SelectedIndex = 0;
+            cb_Group.SelectedIndex = 0;
             Comboboxes();
             Update();
             studVis.IsChecked = true;
@@ -46,41 +49,7 @@ namespace elj.frames
             
         }
 
-        private void Filtr()
-        {
-
-
-
-
-
-            //if (cb_Group.SelectedItem != null || cb_Kurs.SelectedItem != null || cb_Status.SelectedItem != null)
-            //{
-
-            //    int filtr_gr = cb_Group.SelectedItem != null ? cb_Group.SelectedIndex + 1 : 0 ;
-            //    int filtr_krs = cb_Kurs.SelectedItem != null ? cb_Kurs.SelectedIndex + 1 : 0 ;
-            //    string filtr_statis = cb_Status.SelectedItem != null ? cb_Status.SelectedValue.ToString() : null;
-
-            //    if (filtr_gr != 0)
-            //    {
-            //        infoGridStudents.ItemsSource = context.Student.
-            //          Where(i => i.studGroup == filtr_gr);
-            //        if (filtr_krs != 0)
-            //        {
-            //            infoGridStudents.ItemsSource = context.Student.
-            //          Where(i => i.StudGroup1.course == filtr_krs && i.studGroup == filtr_gr);
-            //            if (filtr_statis != null)
-            //            {
-            //                infoGridStudents.ItemsSource = context.Student.
-            //          Where(i => i.StudGroup1.course == filtr_krs && i.studGroup == filtr_gr && i.status == filtr_statis);
-            //            }
-            //        }
-            //    }
-
-            //}
-
-
-
-        }
+        
         private void addUser_Click(object sender, RoutedEventArgs e)
         {
             UserAdd add = new UserAdd();
@@ -90,7 +59,8 @@ namespace elj.frames
         private void Comboboxes()
         {
             List<string> Status = new List<string>();
-           
+
+            Status.Add("Все");
             Status.Add("обучается");
             Status.Add("отчислен");
             Status.Add("академический отпуск");
@@ -106,7 +76,7 @@ namespace elj.frames
 
 
             var grp = context.StudGroup.ToList();
-            //grp.Add();
+            
 
 
             cb_Group.ItemsSource = grp;
@@ -159,56 +129,71 @@ namespace elj.frames
 
         private void cb_Group_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var cbk = cb_Kurs.SelectedIndex + 1;
-            string cbs = null;
-            string cbg = null;
-
-            if (cbs == null && cbk == -1)
+            /* чтоб не мешалось делать другие фильтры
+             
+            int cbk = cb_Kurs.SelectedIndex;
+            string cbs = cb_Status.SelectedValue.ToString();
+            string cbg = cb_Group.SelectedValue.ToString();
+            if (cbs == "Все" && cbk == -1)
+            {       
+                infoGridStudents.ItemsSource = context.Student.
+                       Where(i => i.StudGroup1.groupName == cbg).ToList();
+            }
+            else if (cbk != -1 && cbs == "Все")
             {
                 
-                cbg = cb_Group.SelectedValue.ToString();
-
+                cbk = cb_Kurs.SelectedIndex +1;
                 infoGridStudents.ItemsSource = context.Student.
-                      Where(i => i.StudGroup1.groupName == cbg).ToList();
+                      Where(i => i.StudGroup1.groupName == cbg && i.StudGroup1.course == cbk).ToList();
             }
-           // else if (cbk != -1 && cbs == null && cbg != null)
-           // {
-           //     cbg = cb_Group.SelectedValue.ToString();
-           //
-           //     infoGridStudents.ItemsSource = context.Student.
-           //           Where(i => i.StudGroup1.groupName == cbg && i.StudGroup1.course == cbk).ToList();
-           // }
-           // else 
-           // {
-           //     cbg = cb_Group.SelectedValue.ToString();
-           //
-           //     infoGridStudents.ItemsSource = context.Student.
-           //           Where(i => i.StudGroup1.groupName == cbg && i.StudGroup1.course == cbk && i.status == cbs.ToString()).ToList();
-           // }
+            else if (cbk == -1 && cbs !="Все" )
+            {
+                cbs = cb_Status.SelectedValue.ToString();
+                infoGridStudents.ItemsSource = context.Student.
+                     Where(i => i.StudGroup1.groupName == cbg && i.status == cbs.ToString()).ToList();
 
+            }
+            else
+            {
+                cbk = cb_Kurs.SelectedIndex + 1;
+                cbs = cb_Status.SelectedValue.ToString();
+                infoGridStudents.ItemsSource = context.Student.
+                      Where(i => i.StudGroup1.groupName == cbg && i.StudGroup1.course == cbk && i.status == cbs.ToString()).ToList();
+            }
+
+            */
         }
 
         private void cb_Status_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var cbk = cb_Kurs.SelectedIndex + 1;
-            var cbs = cb_Status.SelectedValue.ToString();
-            var cbg = cb_Group.SelectedIndex + 1;
-
-            if (cbs != null && cbk == -1 && cbg == -1)
+            int cbk = cb_Kurs.SelectedIndex;
+            string cbs = cb_Status.SelectedValue.ToString();
+            string cbg = cb_Group.SelectedValue.ToString();
+            if (cbg == null && cbk == -1)
             {
                 infoGridStudents.ItemsSource = context.Student.
-                      Where(i => i.status == cbs).ToList();
+                       Where(i => i.status == cbs).ToList();
             }
-            else if (cbk != -1 && cbg == -1)
+            else if (cbk != -1 && cbg == null)
             {
+                cbk = cb_Kurs.SelectedIndex + 1;
                 infoGridStudents.ItemsSource = context.Student.
                       Where(i => i.status == cbs && i.StudGroup1.course == cbk).ToList();
             }
-            else
+            else if (cbk == -1 && cbg != null)
             {
+                cbg = cb_Group.SelectedItem.ToString();
                 infoGridStudents.ItemsSource = context.Student.
-                      Where(i => i.studGroup == cbg && i.StudGroup1.course == cbk && i.status == cbs).ToList();
+                     Where(i => i.StudGroup1.groupName == cbg && i.status == cbs.ToString()).ToList();
+
             }
+            //else
+            //{
+            //    cbk = cb_Kurs.SelectedIndex + 1;
+            //    cbs = cb_Status.SelectedValue.ToString();
+            //    infoGridStudents.ItemsSource = context.Student.
+            //          Where(i => i.StudGroup1.groupName == cbg && i.StudGroup1.course == cbk && i.status == cbs.ToString()).ToList();
+            //}
         }
 
         private void cb_Kurs_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -217,33 +202,33 @@ namespace elj.frames
             //string cbs = null;
             //int cbg = 0;
 
-            var cbk = cb_Kurs.SelectedIndex + 1;
-            string cbs = null;
-            string cbg = null;
+            //var cbk = cb_Kurs.SelectedIndex + 1;
+            //string cbs = null;
+            //string cbg = null;
 
-            cb_Group.ItemsSource = context.StudGroup.Where(i=> i.course == cbk).ToList();
-            if (cbs == null && cbk != -1 && cbg == null)
-            {
-                 //cbk = cb_Kurs.SelectedIndex + 1;
-                 //cbs = cb_Status.SelectedValue.ToString();
-                 //cbg = cb_Group.SelectedIndex + 1;
+            //cb_Group.ItemsSource = context.StudGroup.Where(i=> i.course == cbk).ToList();
+            //if (cbs == null && cbk != -1 && cbg == null)
+            //{
+            //     //cbk = cb_Kurs.SelectedIndex + 1;
+            //     //cbs = cb_Status.SelectedValue.ToString();
+            //     //cbg = cb_Group.SelectedIndex + 1;
                 
-                infoGridStudents.ItemsSource = context.Student.
-                      Where(i => i.StudGroup1.course == cbk).ToList();
-            }
-            else if (cbs != null && cbg == null)
-            {
-                cbg = cb_Group.SelectedItem.ToString();
-                cbs = cb_Status.SelectedValue.ToString();
-                infoGridStudents.ItemsSource = context.Student.
-                      Where(i => i.status == cbs && i.StudGroup1.course == cbk).ToList();
-            }
-            else if (cbg != null && cbk != -1 && cbs != null)
-            {
-                cbs = cb_Status.SelectedValue.ToString();
-                infoGridStudents.ItemsSource = context.Student.
-                      Where(i => i.StudGroup1.groupName == cbg && i.StudGroup1.course == cbk && i.status == cbs).ToList();
-            }
+            //    infoGridStudents.ItemsSource = context.Student.
+            //          Where(i => i.StudGroup1.course == cbk).ToList();
+            //}
+            //else if (cbs != null && cbg == null)
+            //{
+            //    cbg = cb_Group.SelectedItem.ToString();
+            //    cbs = cb_Status.SelectedValue.ToString();
+            //    infoGridStudents.ItemsSource = context.Student.
+            //          Where(i => i.status == cbs && i.StudGroup1.course == cbk).ToList();
+            //}
+            //else if (cbg != null && cbk != -1 && cbs != null)
+            //{
+            //    cbs = cb_Status.SelectedValue.ToString();
+            //    infoGridStudents.ItemsSource = context.Student.
+            //          Where(i => i.StudGroup1.groupName == cbg && i.StudGroup1.course == cbk && i.status == cbs).ToList();
+            //}
         }
 
         private void cb_Position_SelectionChanged(object sender, SelectionChangedEventArgs e)
