@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:elj.windows"
         mc:Ignorable="d"
         Foreground="White"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         Style="{StaticResource winSt}"
-        Title="RaspAdd" Height="300" Width="525">
+        
+        Title="RaspAdd" Height="300" Width="500">
     <Grid>
         <Image Source="/pic/Group.png"
                Height="30"
@@ -41,11 +42,12 @@
                                    Width="150"
                                    Margin="10 4"/>
                     </Border>
-                    <Border BorderThickness="1"          
+                    <Border BorderThickness="1"
+                            Width="245"
                             BorderBrush="Black">
                         <TextBlock Text="Преподаватель"
                                    FontSize="15"
-                                   Width="150"
+                                   Width="230"
                                    Margin="10 4"/>
                     </Border>
                 </WrapPanel>
@@ -68,7 +70,7 @@
                     </Border>
                     <Border BorderThickness="1"          
                             BorderBrush="Black">
-                        <ComboBox Width="170">
+                        <ComboBox Width="245">
                             <ComboBoxItem>
                                 Дерновая В.А.
                             </ComboBoxItem>
@@ -94,7 +96,7 @@
                     </Border>
                     <Border BorderThickness="1"          
                             BorderBrush="Black">
-                        <ComboBox Width="170">
+                        <ComboBox Width="245">
                             <ComboBoxItem>
                                 Дерновая В.А.
                             </ComboBoxItem>
@@ -120,7 +122,7 @@
                     </Border>
                     <Border BorderThickness="1"          
                             BorderBrush="Black">
-                        <ComboBox Width="170">
+                        <ComboBox Width="245">
                             <ComboBoxItem>
                                 Дерновая В.А.
                             </ComboBoxItem>

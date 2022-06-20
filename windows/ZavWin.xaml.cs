@@ -23,7 +23,7 @@ namespace elj.windows
         public ZavWin(int a)
         {
             InitializeComponent();
-            mainFrame.Navigate(new Zavuch());
+            mainFrame.Navigate(new CreateRasp());
             CalendarWind();
         }
 

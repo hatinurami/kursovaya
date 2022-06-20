@@ -23,6 +23,8 @@ namespace elj.windows
         public Teacher(int a)
         {
             InitializeComponent();
+            int idTh = appdata.DBapp.auttch.TeachSubject.Select(c => c.idTeach).FirstOrDefault();
+            mainFrame.Navigate(new TeachPage(idTh));
             CalendarWind();
         }
 

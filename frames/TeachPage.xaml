@@ -33,6 +33,7 @@
         </DataGrid>
         <StackPanel>
             <GroupBox Header="Выбкрите группу"
+                      FontSize="20"
                       Margin="14">
                 <ComboBox x:Name="group_cb"
                           >
@@ -43,8 +44,10 @@
                 
             </GroupBox>
             <GroupBox Header="Выберите дисциплину"
+                      FontSize="19"
                       Margin="14 0">                                                                                   
                 <ComboBox x:Name="disc_cb"
+                          
                           >
                     <ComboBoxItem>
                         русский язык

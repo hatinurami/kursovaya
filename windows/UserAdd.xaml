@@ -9,6 +9,7 @@
         Foreground="White"
         Style="{StaticResource winStad}"
         Title="UserAdd" 
+        WindowStartupLocation="CenterScreen"
         Height="375" 
         Width="340">
     <Grid Margin="10">

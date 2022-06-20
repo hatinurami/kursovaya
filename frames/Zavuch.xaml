@@ -20,7 +20,8 @@
             Grid.Column="1">
             <GroupBox Header="Поиск записей"
                       FontSize="26">
-                <TextBox 
+                <TextBox x:Name="Search"
+                         TextChanged="Search_TextChanged"
                          FontSize="20"/>
             </GroupBox>
             <StackPanel>
@@ -74,21 +75,23 @@
             >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Фамилия"
-                                        Binding="{Binding Users.lName}"/>
+                                        Binding="{Binding Teacher.Users.lName}"/>
                         <DataGridTextColumn Header="Имя"
-                                        Binding="{Binding Users.fName}"
+                                        Binding="{Binding Teacher.Users.fName}"
                                         />
                         <DataGridTextColumn Header="Отчество"
-                                        Binding="{Binding Users.patronim}"/>
+                                        Binding="{Binding Teacher.Users.patronim}"/>
 
                         <DataGridTextColumn Header="Должность"
-                                        Binding="{Binding Position.position1}"/>
+                                        Binding="{Binding Teacher.Position.position1}"/>
+                        <DataGridTextColumn Header="Дисциплина"
+                                            Binding="{Binding Subject.subjectname }"/>
                         <DataGridTextColumn Header="Логин"
-                                            Binding="{Binding Users.login}"/>
+                                            Binding="{Binding Teacher.Users.login}"/>
                         <DataGridTextColumn Header="Пароль"
-                                            Binding="{Binding Users.password}"/>
+                                            Binding="{Binding Teacher.Users.password}"/>
                         <DataGridTextColumn Header="Стаж"
-                                        Binding="{Binding workExperience}"/>
+                                        Binding="{Binding Teacher.workExperience}"/>
 
                     </DataGrid.Columns>
                 </DataGrid>
@@ -142,8 +145,7 @@
                         <GroupBox Header="Группа">
                         <ComboBox x:Name="cb_Group"
                                   Margin="3"
-                                  DisplayMemberPath="groupName"
-                                  SelectedValuePath="groupName"
+                                 SelectedIndex="0"
                                   SelectionChanged="cb_Group_SelectionChanged"
                                   IsEditable="True"
                                   >
@@ -154,6 +156,7 @@
                         <ComboBox x:Name="cb_Status"
                                   SelectionChanged="cb_Status_SelectionChanged"
                                    IsEditable="True"
+                                  SelectedIndex="0"
                                   Margin="3">
                             <!--<TextBlock>Все</TextBlock>-->
                         </ComboBox>
@@ -162,6 +165,7 @@
                         <ComboBox x:Name="cb_Kurs"
                                   SelectionChanged="cb_Kurs_SelectionChanged"
                                    IsEditable="True"
+                                  SelectedIndex="0"
                                   Margin="3">
                             <!--<TextBlock>Все</TextBlock>-->
                         </ComboBox>
@@ -178,10 +182,9 @@
                 <StackPanel>
                     <GroupBox Header="Должность">
                         <ComboBox x:Name="cb_Position"
-                                  DisplayMemberPath="position1"
+                                 SelectedIndex="0"
                                    IsEditable="True"
-                                  SelectionChanged="cb_Position_SelectionChanged"
-                                  SelectedValuePath="idPos"
+                                 SelectionChanged="cb_Position_SelectionChanged"
                                   Margin="3"/>
                     </GroupBox>
                     <!--<GroupBox Header="Стаж">
@@ -192,10 +195,9 @@
                     </GroupBox>-->
                     <GroupBox Header="Дисциплина">
                         <ComboBox x:Name="cb_Subj"
-                                  DisplayMemberPath="subjectname"
+                                 SelectedIndex="0"
                                    IsEditable="True"
-                                  SelectedValuePath="idSubj"
-                                  SelectionChanged="cb_Subj_SelectionChanged"
+                                 SelectionChanged="cb_Subj_SelectionChanged"
                                   Margin="3"/>
                     </GroupBox>
                 </StackPanel>

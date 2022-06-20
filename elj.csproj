@@ -137,7 +137,6 @@
     <Compile Include="appdata\WeekDay.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="classFunc\Filtr.cs" />
     <Compile Include="frames\Account.xaml.cs">
       <DependentUpon>Account.xaml</DependentUpon>
     </Compile>

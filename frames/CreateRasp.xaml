@@ -5,8 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:elj.frames"
       mc:Ignorable="d" 
-      FontFamily="Courier New Bold"
-      d:DesignHeight="582" d:DesignWidth="867"
+      FontFamily="\appdata\ofont.ru_dobotopro.ttf" 
+      d:DesignHeight="582"
+      d:DesignWidth="867"
       Title="CreateRasp">
 
     <Grid>
@@ -29,7 +30,13 @@
                               SelectedValuePath="idGroup"/>
                     
                 </GroupBox>
-          
+                    <GroupBox Header="Поиск преподавателя"
+                              Margin="5">
+                        <TextBox
+                            x:Name="search"
+                            FontSize="18"
+                            />
+                    </GroupBox>
                 </StackPanel>
                
             </GroupBox>
@@ -57,6 +64,7 @@
             x:Name="raspGrid"
             Grid.Column="1"
             Grid.Row="1"
+            Margin="10"
             AutoGenerateColumns="False"
             CanUserReorderColumns="False">
             <DataGrid.Columns>
