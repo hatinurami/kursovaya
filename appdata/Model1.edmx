@@ -166,6 +166,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Shedule_TeachSubject1">
+          <End Role="TeachSubject" Type="Self.TeachSubject" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeachSubject">
+              <PropertyRef Name="idTeachSub" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="idTeachSub" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Shedule_TimeTable">
           <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="1" />
           <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
@@ -211,6 +223,18 @@
             </Principal>
             <Dependent Role="Student">
               <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPerfomance_Shedule">
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="1" />
+          <End Role="StudentPerfomance" Type="Self.StudentPerfomance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shedule">
+              <PropertyRef Name="idSchedule" />
+            </Principal>
+            <Dependent Role="StudentPerfomance">
+              <PropertyRef Name="idSchedule" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -366,6 +390,10 @@
             <End Role="TeachSubject" EntitySet="TeachSubject" />
             <End Role="Shedule" EntitySet="Shedule" />
           </AssociationSet>
+          <AssociationSet Name="FK_Shedule_TeachSubject1" Association="Self.FK_Shedule_TeachSubject1">
+            <End Role="TeachSubject" EntitySet="TeachSubject" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
           <AssociationSet Name="FK_Shedule_TimeTable" Association="Self.FK_Shedule_TimeTable">
             <End Role="TimeTable" EntitySet="TimeTable" />
             <End Role="Shedule" EntitySet="Shedule" />
@@ -381,6 +409,10 @@
           <AssociationSet Name="FK_Student_Users" Association="Self.FK_Student_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPerfomance_Shedule" Association="Self.FK_StudentPerfomance_Shedule">
+            <End Role="Shedule" EntitySet="Shedule" />
+            <End Role="StudentPerfomance" EntitySet="StudentPerfomance" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentPerfomance_Student" Association="Self.FK_StudentPerfomance_Student">
             <End Role="Student" EntitySet="Student" />
@@ -444,6 +476,7 @@
           <NavigationProperty Name="TeachSubject" Relationship="Self.FK_Shedule_TeachSubject" FromRole="Shedule" ToRole="TeachSubject" />
           <NavigationProperty Name="TimeTable" Relationship="Self.FK_Shedule_TimeTable" FromRole="Shedule" ToRole="TimeTable" />
           <NavigationProperty Name="WeekDay" Relationship="Self.FK_Shedule_WeekDay" FromRole="Shedule" ToRole="WeekDay" />
+          <NavigationProperty Name="StudentPerfomance" Relationship="elJournalModel.FK_StudentPerfomance_Shedule" FromRole="Shedule" ToRole="StudentPerfomance" />
         </EntityType>
         <EntityType Name="Speciality">
           <Key>
@@ -477,6 +510,7 @@
           <Property Name="idSchedule" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Student" Relationship="Self.FK_StudentPerfomance_Student" FromRole="StudentPerfomance" ToRole="Student" />
+          <NavigationProperty Name="Shedule" Relationship="elJournalModel.FK_StudentPerfomance_Shedule" FromRole="StudentPerfomance" ToRole="Shedule" />
         </EntityType>
         <EntityType Name="StudGroup">
           <Key>
@@ -833,6 +867,10 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_StudentPerfomance_Shedule" Association="elJournalModel.FK_StudentPerfomance_Shedule">
+            <End Role="Shedule" EntitySet="Shedule" />
+            <End Role="StudentPerfomance" EntitySet="StudentPerfomance" />
+          </AssociationSet>
           <FunctionImport Name="MarkStud" ReturnType="Collection(elJournalModel.MarkStud_Result)">
             <Parameter Name="idSt" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -856,6 +894,18 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <Association Name="FK_StudentPerfomance_Shedule">
+          <End Type="elJournalModel.Shedule" Role="Shedule" Multiplicity="1" />
+          <End Type="elJournalModel.StudentPerfomance" Role="StudentPerfomance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shedule">
+              <PropertyRef Name="idSchedule" />
+            </Principal>
+            <Dependent Role="StudentPerfomance">
+              <PropertyRef Name="idSchedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <ComplexType Name="MarkStud_Result">
           <Property Type="Int16" Name="Оценки" Nullable="true" />
           <Property Type="String" Name="Дисциплина" Nullable="false" MaxLength="50" />

@@ -22,5 +22,6 @@ namespace elj.appdata
         public System.DateTime date { get; set; }
     
         public virtual Student Student { get; set; }
+        public virtual Shedule Shedule { get; set; }
     }
 }

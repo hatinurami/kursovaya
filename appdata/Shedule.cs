@@ -14,6 +14,12 @@ namespace elj.appdata
     
     public partial class Shedule
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Shedule()
+        {
+            this.StudentPerfomance = new HashSet<StudentPerfomance>();
+        }
+    
         public int idSchedule { get; set; }
         public int idGroup { get; set; }
         public int idTimeTable { get; set; }
@@ -24,5 +30,7 @@ namespace elj.appdata
         public virtual TeachSubject TeachSubject { get; set; }
         public virtual TimeTable TimeTable { get; set; }
         public virtual WeekDay WeekDay { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentPerfomance> StudentPerfomance { get; set; }
     }
 }
